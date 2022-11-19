@@ -36,13 +36,98 @@ namespace BodegaGrid {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::DataGridView^ DGVBodega;
-	private: System::Windows::Forms::ComboBox^ CBElegirOpcion;
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ TBBodegaFila;
 	private: System::Windows::Forms::TextBox^ TBBodegaColumn;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Button^ BIngresarBodega;
+	private: System::Windows::Forms::Label^ LCrearBahia;
+	private: System::Windows::Forms::Label^ LCrerBahiaFila;
+	private: System::Windows::Forms::Label^ LCrerBahiaColumn;
+	private: System::Windows::Forms::TextBox^ TBCrearColumnaBahia;
+
+
+
+
+	private: System::Windows::Forms::TextBox^ TBCrearBahiaFila;
+
+	private: System::Windows::Forms::Label^ LCrerBahiaProduct;
+	private: System::Windows::Forms::TextBox^ TBCrearBahiaProducto;
+	private: System::Windows::Forms::Label^ LCrearBahiaPeso;
+	private: System::Windows::Forms::TextBox^ TBCrearBahiaPesoMax;
+	private: System::Windows::Forms::Button^ BCrearBahiaIngresar;
+
+
+
+
+
+
+	private: System::Windows::Forms::Button^ BCrearBahiaOtroProduct;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::TextBox^ TBAlmacenarCodigoAlmacen;
+
+
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::TextBox^ TBAlmacenarProductoTipo;
+
+
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::TextBox^ TBAlmacenarPesoProducto;
+
+
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::TextBox^ TBAlmacenarCantUnidades;
+
+
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::TabControl^ TBCMenuOpciones;
+
+	private: System::Windows::Forms::TabPage^ TPCrearBahia;
+	private: System::Windows::Forms::TabPage^ TBAlmacenarProduct;
+	private: System::Windows::Forms::TabPage^ TBRetirar;
+	private: System::Windows::Forms::TabPage^ TPEliminar;
+	private: System::Windows::Forms::TabPage^ TPInventario;
+	private: System::Windows::Forms::TabPage^ TPBodega;
+	private: System::Windows::Forms::TextBox^ TBAlmacenarFechaAlmacenaje;
+
+	private: System::Windows::Forms::Button^ BAlmacenarProduct;
+	private: System::Windows::Forms::Label^ label11;
+
+
+	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::TextBox^ TBRetirarNombResponsable;
+
+	private: System::Windows::Forms::TextBox^ TBRetirarTipoProduct;
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::Label^ label15;
+	private: System::Windows::Forms::TextBox^ TBRetirarFechaRetiro;
+
+	private: System::Windows::Forms::TextBox^ TBRetirarCantidades;
+
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ BEliminarBahia;
+	private: System::Windows::Forms::TextBox^ TBEliminarFila;
+	private: System::Windows::Forms::TextBox^ TBEliminarColumn;
+	private: System::Windows::Forms::Label^ label18;
+	private: System::Windows::Forms::Label^ label17;
+	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::Button^ BInventarioOrdenar;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::Label^ label19;
+
+
+
+
+
+
+
+
+
 
 	protected:
 
@@ -61,14 +146,70 @@ namespace BodegaGrid {
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->DGVBodega = (gcnew System::Windows::Forms::DataGridView());
-			this->CBElegirOpcion = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->TBBodegaFila = (gcnew System::Windows::Forms::TextBox());
 			this->TBBodegaColumn = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->BIngresarBodega = (gcnew System::Windows::Forms::Button());
+			this->LCrearBahia = (gcnew System::Windows::Forms::Label());
+			this->LCrerBahiaFila = (gcnew System::Windows::Forms::Label());
+			this->LCrerBahiaColumn = (gcnew System::Windows::Forms::Label());
+			this->TBCrearColumnaBahia = (gcnew System::Windows::Forms::TextBox());
+			this->TBCrearBahiaFila = (gcnew System::Windows::Forms::TextBox());
+			this->LCrerBahiaProduct = (gcnew System::Windows::Forms::Label());
+			this->TBCrearBahiaProducto = (gcnew System::Windows::Forms::TextBox());
+			this->LCrearBahiaPeso = (gcnew System::Windows::Forms::Label());
+			this->TBCrearBahiaPesoMax = (gcnew System::Windows::Forms::TextBox());
+			this->BCrearBahiaIngresar = (gcnew System::Windows::Forms::Button());
+			this->BCrearBahiaOtroProduct = (gcnew System::Windows::Forms::Button());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->TBAlmacenarCodigoAlmacen = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->TBAlmacenarProductoTipo = (gcnew System::Windows::Forms::TextBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->TBAlmacenarPesoProducto = (gcnew System::Windows::Forms::TextBox());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->TBAlmacenarCantUnidades = (gcnew System::Windows::Forms::TextBox());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->TBCMenuOpciones = (gcnew System::Windows::Forms::TabControl());
+			this->TPCrearBahia = (gcnew System::Windows::Forms::TabPage());
+			this->TBAlmacenarProduct = (gcnew System::Windows::Forms::TabPage());
+			this->BAlmacenarProduct = (gcnew System::Windows::Forms::Button());
+			this->TBAlmacenarFechaAlmacenaje = (gcnew System::Windows::Forms::TextBox());
+			this->TBRetirar = (gcnew System::Windows::Forms::TabPage());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->TBRetirarNombResponsable = (gcnew System::Windows::Forms::TextBox());
+			this->TBRetirarTipoProduct = (gcnew System::Windows::Forms::TextBox());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->TBRetirarFechaRetiro = (gcnew System::Windows::Forms::TextBox());
+			this->TBRetirarCantidades = (gcnew System::Windows::Forms::TextBox());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->TPEliminar = (gcnew System::Windows::Forms::TabPage());
+			this->TPInventario = (gcnew System::Windows::Forms::TabPage());
+			this->TPBodega = (gcnew System::Windows::Forms::TabPage());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->TBEliminarColumn = (gcnew System::Windows::Forms::TextBox());
+			this->TBEliminarFila = (gcnew System::Windows::Forms::TextBox());
+			this->BEliminarBahia = (gcnew System::Windows::Forms::Button());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->BInventarioOrdenar = (gcnew System::Windows::Forms::Button());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGVBodega))->BeginInit();
+			this->TBCMenuOpciones->SuspendLayout();
+			this->TPCrearBahia->SuspendLayout();
+			this->TBAlmacenarProduct->SuspendLayout();
+			this->TBRetirar->SuspendLayout();
+			this->TPEliminar->SuspendLayout();
+			this->TPInventario->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -86,24 +227,11 @@ namespace BodegaGrid {
 			// DGVBodega
 			// 
 			this->DGVBodega->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->DGVBodega->Location = System::Drawing::Point(63, 164);
+			this->DGVBodega->Location = System::Drawing::Point(46, 355);
 			this->DGVBodega->Name = L"DGVBodega";
 			this->DGVBodega->ReadOnly = true;
-			this->DGVBodega->Size = System::Drawing::Size(288, 183);
+			this->DGVBodega->Size = System::Drawing::Size(403, 267);
 			this->DGVBodega->TabIndex = 1;
-			// 
-			// CBElegirOpcion
-			// 
-			this->CBElegirOpcion->Enabled = false;
-			this->CBElegirOpcion->FormattingEnabled = true;
-			this->CBElegirOpcion->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
-				L"Crear Bahía", L"Almacenar Producto", L"Retirar Producto",
-					L"Eliminar Bahía", L"Inventario", L"Bodegas"
-			});
-			this->CBElegirOpcion->Location = System::Drawing::Point(12, 127);
-			this->CBElegirOpcion->Name = L"CBElegirOpcion";
-			this->CBElegirOpcion->Size = System::Drawing::Size(121, 21);
-			this->CBElegirOpcion->TabIndex = 2;
 			// 
 			// label2
 			// 
@@ -156,23 +284,525 @@ namespace BodegaGrid {
 			this->BIngresarBodega->UseVisualStyleBackColor = true;
 			this->BIngresarBodega->Click += gcnew System::EventHandler(this, &Bodega::button1_Click);
 			// 
+			// LCrearBahia
+			// 
+			this->LCrearBahia->AutoSize = true;
+			this->LCrearBahia->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->LCrearBahia->Font = (gcnew System::Drawing::Font(L"Marcellus SC", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LCrearBahia->ForeColor = System::Drawing::SystemColors::ControlText;
+			this->LCrearBahia->Location = System::Drawing::Point(16, 14);
+			this->LCrearBahia->Name = L"LCrearBahia";
+			this->LCrearBahia->Size = System::Drawing::Size(116, 22);
+			this->LCrearBahia->TabIndex = 9;
+			this->LCrearBahia->Text = L"Crear Bahía:";
+			// 
+			// LCrerBahiaFila
+			// 
+			this->LCrerBahiaFila->AutoSize = true;
+			this->LCrerBahiaFila->Location = System::Drawing::Point(164, 14);
+			this->LCrerBahiaFila->Name = L"LCrerBahiaFila";
+			this->LCrerBahiaFila->Size = System::Drawing::Size(26, 13);
+			this->LCrerBahiaFila->TabIndex = 10;
+			this->LCrerBahiaFila->Text = L"Fila:";
+			// 
+			// LCrerBahiaColumn
+			// 
+			this->LCrerBahiaColumn->AutoSize = true;
+			this->LCrerBahiaColumn->Location = System::Drawing::Point(205, 14);
+			this->LCrerBahiaColumn->Name = L"LCrerBahiaColumn";
+			this->LCrerBahiaColumn->Size = System::Drawing::Size(51, 13);
+			this->LCrerBahiaColumn->TabIndex = 11;
+			this->LCrerBahiaColumn->Text = L"Columna:";
+			// 
+			// TBCrearColumnaBahia
+			// 
+			this->TBCrearColumnaBahia->Location = System::Drawing::Point(216, 30);
+			this->TBCrearColumnaBahia->Name = L"TBCrearColumnaBahia";
+			this->TBCrearColumnaBahia->Size = System::Drawing::Size(47, 20);
+			this->TBCrearColumnaBahia->TabIndex = 12;
+			// 
+			// TBCrearBahiaFila
+			// 
+			this->TBCrearBahiaFila->Location = System::Drawing::Point(163, 30);
+			this->TBCrearBahiaFila->Name = L"TBCrearBahiaFila";
+			this->TBCrearBahiaFila->Size = System::Drawing::Size(47, 20);
+			this->TBCrearBahiaFila->TabIndex = 13;
+			// 
+			// LCrerBahiaProduct
+			// 
+			this->LCrerBahiaProduct->AutoSize = true;
+			this->LCrerBahiaProduct->Location = System::Drawing::Point(168, 53);
+			this->LCrerBahiaProduct->Name = L"LCrerBahiaProduct";
+			this->LCrerBahiaProduct->Size = System::Drawing::Size(91, 13);
+			this->LCrerBahiaProduct->TabIndex = 14;
+			this->LCrerBahiaProduct->Text = L"Tipo de producto:";
+			// 
+			// TBCrearBahiaProducto
+			// 
+			this->TBCrearBahiaProducto->Location = System::Drawing::Point(165, 69);
+			this->TBCrearBahiaProducto->Name = L"TBCrearBahiaProducto";
+			this->TBCrearBahiaProducto->Size = System::Drawing::Size(100, 20);
+			this->TBCrearBahiaProducto->TabIndex = 15;
+			// 
+			// LCrearBahiaPeso
+			// 
+			this->LCrearBahiaPeso->AutoSize = true;
+			this->LCrearBahiaPeso->Location = System::Drawing::Point(179, 95);
+			this->LCrearBahiaPeso->Name = L"LCrearBahiaPeso";
+			this->LCrearBahiaPeso->Size = System::Drawing::Size(73, 13);
+			this->LCrearBahiaPeso->TabIndex = 16;
+			this->LCrearBahiaPeso->Text = L"Peso Máximo:";
+			// 
+			// TBCrearBahiaPesoMax
+			// 
+			this->TBCrearBahiaPesoMax->Location = System::Drawing::Point(173, 111);
+			this->TBCrearBahiaPesoMax->Name = L"TBCrearBahiaPesoMax";
+			this->TBCrearBahiaPesoMax->Size = System::Drawing::Size(79, 20);
+			this->TBCrearBahiaPesoMax->TabIndex = 17;
+			// 
+			// BCrearBahiaIngresar
+			// 
+			this->BCrearBahiaIngresar->Location = System::Drawing::Point(168, 137);
+			this->BCrearBahiaIngresar->Name = L"BCrearBahiaIngresar";
+			this->BCrearBahiaIngresar->Size = System::Drawing::Size(88, 23);
+			this->BCrearBahiaIngresar->TabIndex = 18;
+			this->BCrearBahiaIngresar->Text = L"Ingresar Bahía";
+			this->BCrearBahiaIngresar->UseVisualStyleBackColor = true;
+			// 
+			// BCrearBahiaOtroProduct
+			// 
+			this->BCrearBahiaOtroProduct->Location = System::Drawing::Point(271, 60);
+			this->BCrearBahiaOtroProduct->Name = L"BCrearBahiaOtroProduct";
+			this->BCrearBahiaOtroProduct->Size = System::Drawing::Size(111, 36);
+			this->BCrearBahiaOtroProduct->TabIndex = 19;
+			this->BCrearBahiaOtroProduct->Text = L"Ingresar otro producto a la bahía";
+			this->BCrearBahiaOtroProduct->UseVisualStyleBackColor = true;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Marcellus SC", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(3, 3);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(190, 22);
+			this->label5->TabIndex = 20;
+			this->label5->Text = L"Almacenar producto:";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(19, 34);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(124, 13);
+			this->label6->TabIndex = 21;
+			this->label6->Text = L"Código Almacenamiento:";
+			// 
+			// TBAlmacenarCodigoAlmacen
+			// 
+			this->TBAlmacenarCodigoAlmacen->Location = System::Drawing::Point(149, 34);
+			this->TBAlmacenarCodigoAlmacen->Name = L"TBAlmacenarCodigoAlmacen";
+			this->TBAlmacenarCodigoAlmacen->Size = System::Drawing::Size(100, 20);
+			this->TBAlmacenarCodigoAlmacen->TabIndex = 22;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(19, 68);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(91, 13);
+			this->label7->TabIndex = 23;
+			this->label7->Text = L"Tipo de producto:";
+			// 
+			// TBAlmacenarProductoTipo
+			// 
+			this->TBAlmacenarProductoTipo->Location = System::Drawing::Point(116, 65);
+			this->TBAlmacenarProductoTipo->Name = L"TBAlmacenarProductoTipo";
+			this->TBAlmacenarProductoTipo->Size = System::Drawing::Size(100, 20);
+			this->TBAlmacenarProductoTipo->TabIndex = 24;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(19, 97);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(96, 13);
+			this->label8->TabIndex = 25;
+			this->label8->Text = L"Peso del producto:";
+			// 
+			// TBAlmacenarPesoProducto
+			// 
+			this->TBAlmacenarPesoProducto->Location = System::Drawing::Point(121, 94);
+			this->TBAlmacenarPesoProducto->Name = L"TBAlmacenarPesoProducto";
+			this->TBAlmacenarPesoProducto->Size = System::Drawing::Size(47, 20);
+			this->TBAlmacenarPesoProducto->TabIndex = 26;
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(19, 127);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(113, 13);
+			this->label9->TabIndex = 27;
+			this->label9->Text = L"Cantidad de unidades:";
+			// 
+			// TBAlmacenarCantUnidades
+			// 
+			this->TBAlmacenarCantUnidades->Location = System::Drawing::Point(133, 124);
+			this->TBAlmacenarCantUnidades->Name = L"TBAlmacenarCantUnidades";
+			this->TBAlmacenarCantUnidades->Size = System::Drawing::Size(47, 20);
+			this->TBAlmacenarCantUnidades->TabIndex = 28;
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(20, 152);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(112, 13);
+			this->label10->TabIndex = 29;
+			this->label10->Text = L"Fecha de almacenaje:";
+			// 
+			// TBCMenuOpciones
+			// 
+			this->TBCMenuOpciones->Controls->Add(this->TPCrearBahia);
+			this->TBCMenuOpciones->Controls->Add(this->TBAlmacenarProduct);
+			this->TBCMenuOpciones->Controls->Add(this->TBRetirar);
+			this->TBCMenuOpciones->Controls->Add(this->TPEliminar);
+			this->TBCMenuOpciones->Controls->Add(this->TPInventario);
+			this->TBCMenuOpciones->Controls->Add(this->TPBodega);
+			this->TBCMenuOpciones->Enabled = false;
+			this->TBCMenuOpciones->Location = System::Drawing::Point(12, 106);
+			this->TBCMenuOpciones->Name = L"TBCMenuOpciones";
+			this->TBCMenuOpciones->SelectedIndex = 0;
+			this->TBCMenuOpciones->Size = System::Drawing::Size(470, 243);
+			this->TBCMenuOpciones->TabIndex = 30;
+			// 
+			// TPCrearBahia
+			// 
+			this->TPCrearBahia->Controls->Add(this->LCrearBahia);
+			this->TPCrearBahia->Controls->Add(this->LCrerBahiaFila);
+			this->TPCrearBahia->Controls->Add(this->LCrerBahiaColumn);
+			this->TPCrearBahia->Controls->Add(this->TBCrearColumnaBahia);
+			this->TPCrearBahia->Controls->Add(this->TBCrearBahiaFila);
+			this->TPCrearBahia->Controls->Add(this->LCrerBahiaProduct);
+			this->TPCrearBahia->Controls->Add(this->TBCrearBahiaProducto);
+			this->TPCrearBahia->Controls->Add(this->LCrearBahiaPeso);
+			this->TPCrearBahia->Controls->Add(this->TBCrearBahiaPesoMax);
+			this->TPCrearBahia->Controls->Add(this->BCrearBahiaIngresar);
+			this->TPCrearBahia->Controls->Add(this->BCrearBahiaOtroProduct);
+			this->TPCrearBahia->Location = System::Drawing::Point(4, 22);
+			this->TPCrearBahia->Name = L"TPCrearBahia";
+			this->TPCrearBahia->Padding = System::Windows::Forms::Padding(3);
+			this->TPCrearBahia->Size = System::Drawing::Size(462, 217);
+			this->TPCrearBahia->TabIndex = 0;
+			this->TPCrearBahia->Text = L"Crear Bahía";
+			this->TPCrearBahia->UseVisualStyleBackColor = true;
+			// 
+			// TBAlmacenarProduct
+			// 
+			this->TBAlmacenarProduct->Controls->Add(this->BAlmacenarProduct);
+			this->TBAlmacenarProduct->Controls->Add(this->TBAlmacenarFechaAlmacenaje);
+			this->TBAlmacenarProduct->Controls->Add(this->label5);
+			this->TBAlmacenarProduct->Controls->Add(this->label10);
+			this->TBAlmacenarProduct->Controls->Add(this->label6);
+			this->TBAlmacenarProduct->Controls->Add(this->TBAlmacenarCantUnidades);
+			this->TBAlmacenarProduct->Controls->Add(this->TBAlmacenarCodigoAlmacen);
+			this->TBAlmacenarProduct->Controls->Add(this->label9);
+			this->TBAlmacenarProduct->Controls->Add(this->label7);
+			this->TBAlmacenarProduct->Controls->Add(this->TBAlmacenarPesoProducto);
+			this->TBAlmacenarProduct->Controls->Add(this->TBAlmacenarProductoTipo);
+			this->TBAlmacenarProduct->Controls->Add(this->label8);
+			this->TBAlmacenarProduct->Location = System::Drawing::Point(4, 22);
+			this->TBAlmacenarProduct->Name = L"TBAlmacenarProduct";
+			this->TBAlmacenarProduct->Padding = System::Windows::Forms::Padding(3);
+			this->TBAlmacenarProduct->Size = System::Drawing::Size(462, 217);
+			this->TBAlmacenarProduct->TabIndex = 1;
+			this->TBAlmacenarProduct->Text = L"Almacenar producto";
+			this->TBAlmacenarProduct->UseVisualStyleBackColor = true;
+			// 
+			// BAlmacenarProduct
+			// 
+			this->BAlmacenarProduct->Location = System::Drawing::Point(65, 175);
+			this->BAlmacenarProduct->Name = L"BAlmacenarProduct";
+			this->BAlmacenarProduct->Size = System::Drawing::Size(131, 27);
+			this->BAlmacenarProduct->TabIndex = 31;
+			this->BAlmacenarProduct->Text = L"Almacenar Producto";
+			this->BAlmacenarProduct->UseVisualStyleBackColor = true;
+			// 
+			// TBAlmacenarFechaAlmacenaje
+			// 
+			this->TBAlmacenarFechaAlmacenaje->Location = System::Drawing::Point(133, 149);
+			this->TBAlmacenarFechaAlmacenaje->Name = L"TBAlmacenarFechaAlmacenaje";
+			this->TBAlmacenarFechaAlmacenaje->Size = System::Drawing::Size(91, 20);
+			this->TBAlmacenarFechaAlmacenaje->TabIndex = 30;
+			// 
+			// TBRetirar
+			// 
+			this->TBRetirar->Controls->Add(this->button1);
+			this->TBRetirar->Controls->Add(this->label13);
+			this->TBRetirar->Controls->Add(this->TBRetirarNombResponsable);
+			this->TBRetirar->Controls->Add(this->TBRetirarTipoProduct);
+			this->TBRetirar->Controls->Add(this->label14);
+			this->TBRetirar->Controls->Add(this->label15);
+			this->TBRetirar->Controls->Add(this->TBRetirarFechaRetiro);
+			this->TBRetirar->Controls->Add(this->TBRetirarCantidades);
+			this->TBRetirar->Controls->Add(this->label16);
+			this->TBRetirar->Controls->Add(this->label11);
+			this->TBRetirar->Location = System::Drawing::Point(4, 22);
+			this->TBRetirar->Name = L"TBRetirar";
+			this->TBRetirar->Padding = System::Windows::Forms::Padding(3);
+			this->TBRetirar->Size = System::Drawing::Size(462, 217);
+			this->TBRetirar->TabIndex = 2;
+			this->TBRetirar->Text = L"Retirar Producto";
+			this->TBRetirar->UseVisualStyleBackColor = true;
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Location = System::Drawing::Point(7, 32);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(77, 13);
+			this->label13->TabIndex = 31;
+			this->label13->Text = L"Tipo Producto:";
+			// 
+			// TBRetirarNombResponsable
+			// 
+			this->TBRetirarNombResponsable->Location = System::Drawing::Point(133, 119);
+			this->TBRetirarNombResponsable->Name = L"TBRetirarNombResponsable";
+			this->TBRetirarNombResponsable->Size = System::Drawing::Size(78, 20);
+			this->TBRetirarNombResponsable->TabIndex = 38;
+			// 
+			// TBRetirarTipoProduct
+			// 
+			this->TBRetirarTipoProduct->Location = System::Drawing::Point(86, 32);
+			this->TBRetirarTipoProduct->Name = L"TBRetirarTipoProduct";
+			this->TBRetirarTipoProduct->Size = System::Drawing::Size(100, 20);
+			this->TBRetirarTipoProduct->TabIndex = 32;
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(6, 122);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(124, 13);
+			this->label14->TabIndex = 37;
+			this->label14->Text = L"Nombre del responsable:";
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(6, 63);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(151, 13);
+			this->label15->TabIndex = 33;
+			this->label15->Text = L"Cantidad de unidades a retirar:";
+			// 
+			// TBRetirarFechaRetiro
+			// 
+			this->TBRetirarFechaRetiro->Location = System::Drawing::Point(86, 89);
+			this->TBRetirarFechaRetiro->Name = L"TBRetirarFechaRetiro";
+			this->TBRetirarFechaRetiro->Size = System::Drawing::Size(100, 20);
+			this->TBRetirarFechaRetiro->TabIndex = 36;
+			// 
+			// TBRetirarCantidades
+			// 
+			this->TBRetirarCantidades->Location = System::Drawing::Point(159, 60);
+			this->TBRetirarCantidades->Name = L"TBRetirarCantidades";
+			this->TBRetirarCantidades->Size = System::Drawing::Size(100, 20);
+			this->TBRetirarCantidades->TabIndex = 34;
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(6, 92);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(81, 13);
+			this->label16->TabIndex = 35;
+			this->label16->Text = L"Fecha de retiro:";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->label11->Font = (gcnew System::Drawing::Font(L"Marcellus SC", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label11->Location = System::Drawing::Point(6, 3);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(180, 26);
+			this->label11->TabIndex = 0;
+			this->label11->Text = L"Retirar Producto";
+			// 
+			// TPEliminar
+			// 
+			this->TPEliminar->Controls->Add(this->BEliminarBahia);
+			this->TPEliminar->Controls->Add(this->TBEliminarFila);
+			this->TPEliminar->Controls->Add(this->TBEliminarColumn);
+			this->TPEliminar->Controls->Add(this->label18);
+			this->TPEliminar->Controls->Add(this->label17);
+			this->TPEliminar->Controls->Add(this->label12);
+			this->TPEliminar->Location = System::Drawing::Point(4, 22);
+			this->TPEliminar->Name = L"TPEliminar";
+			this->TPEliminar->Padding = System::Windows::Forms::Padding(3);
+			this->TPEliminar->Size = System::Drawing::Size(462, 217);
+			this->TPEliminar->TabIndex = 3;
+			this->TPEliminar->Text = L"Eliminar Bahía";
+			this->TPEliminar->UseVisualStyleBackColor = true;
+			// 
+			// TPInventario
+			// 
+			this->TPInventario->Controls->Add(this->dataGridView1);
+			this->TPInventario->Controls->Add(this->BInventarioOrdenar);
+			this->TPInventario->Controls->Add(this->comboBox1);
+			this->TPInventario->Controls->Add(this->label19);
+			this->TPInventario->Location = System::Drawing::Point(4, 22);
+			this->TPInventario->Name = L"TPInventario";
+			this->TPInventario->Padding = System::Windows::Forms::Padding(3);
+			this->TPInventario->Size = System::Drawing::Size(462, 217);
+			this->TPInventario->TabIndex = 4;
+			this->TPInventario->Text = L"Inventario";
+			this->TPInventario->UseVisualStyleBackColor = true;
+			// 
+			// TPBodega
+			// 
+			this->TPBodega->Location = System::Drawing::Point(4, 22);
+			this->TPBodega->Name = L"TPBodega";
+			this->TPBodega->Padding = System::Windows::Forms::Padding(3);
+			this->TPBodega->Size = System::Drawing::Size(462, 217);
+			this->TPBodega->TabIndex = 5;
+			this->TPBodega->Text = L"Bodegas";
+			this->TPBodega->UseVisualStyleBackColor = true;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(53, 145);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(104, 23);
+			this->button1->TabIndex = 39;
+			this->button1->Text = L"Retirar Producto";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Marcellus SC", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label12->Location = System::Drawing::Point(6, 3);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(133, 22);
+			this->label12->TabIndex = 0;
+			this->label12->Text = L"Eliminar Bahía";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->Location = System::Drawing::Point(20, 39);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(26, 13);
+			this->label17->TabIndex = 1;
+			this->label17->Text = L"Fila:";
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(111, 39);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(51, 13);
+			this->label18->TabIndex = 2;
+			this->label18->Text = L"Columna:";
+			// 
+			// TBEliminarColumn
+			// 
+			this->TBEliminarColumn->Location = System::Drawing::Point(114, 55);
+			this->TBEliminarColumn->Name = L"TBEliminarColumn";
+			this->TBEliminarColumn->Size = System::Drawing::Size(49, 20);
+			this->TBEliminarColumn->TabIndex = 3;
+			// 
+			// TBEliminarFila
+			// 
+			this->TBEliminarFila->Location = System::Drawing::Point(13, 55);
+			this->TBEliminarFila->Name = L"TBEliminarFila";
+			this->TBEliminarFila->Size = System::Drawing::Size(49, 20);
+			this->TBEliminarFila->TabIndex = 4;
+			// 
+			// BEliminarBahia
+			// 
+			this->BEliminarBahia->Location = System::Drawing::Point(50, 81);
+			this->BEliminarBahia->Name = L"BEliminarBahia";
+			this->BEliminarBahia->Size = System::Drawing::Size(75, 23);
+			this->BEliminarBahia->TabIndex = 9;
+			this->BEliminarBahia->Text = L"Ingresar";
+			this->BEliminarBahia->UseVisualStyleBackColor = true;
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->label19->Font = (gcnew System::Drawing::Font(L"Marcellus SC", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label19->Location = System::Drawing::Point(6, 3);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(119, 26);
+			this->label19->TabIndex = 0;
+			this->label19->Text = L"Inventario:";
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Tipo de producto", L"Peso unitario", L"Fecha de ingreso del pedido" });
+			this->comboBox1->Location = System::Drawing::Point(6, 41);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 21);
+			this->comboBox1->TabIndex = 1;
+			// 
+			// BInventarioOrdenar
+			// 
+			this->BInventarioOrdenar->Location = System::Drawing::Point(30, 68);
+			this->BInventarioOrdenar->Name = L"BInventarioOrdenar";
+			this->BInventarioOrdenar->Size = System::Drawing::Size(75, 23);
+			this->BInventarioOrdenar->TabIndex = 2;
+			this->BInventarioOrdenar->Text = L"Ordenar";
+			this->BInventarioOrdenar->UseVisualStyleBackColor = true;
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Location = System::Drawing::Point(170, 21);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->Size = System::Drawing::Size(240, 150);
+			this->dataGridView1->TabIndex = 3;
+			// 
 			// Bodega
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(431, 359);
+			this->ClientSize = System::Drawing::Size(494, 670);
+			this->Controls->Add(this->TBCMenuOpciones);
 			this->Controls->Add(this->BIngresarBodega);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->TBBodegaColumn);
 			this->Controls->Add(this->TBBodegaFila);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->CBElegirOpcion);
 			this->Controls->Add(this->DGVBodega);
 			this->Controls->Add(this->label1);
 			this->Name = L"Bodega";
 			this->Text = L"Bodega";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGVBodega))->EndInit();
+			this->TBCMenuOpciones->ResumeLayout(false);
+			this->TPCrearBahia->ResumeLayout(false);
+			this->TPCrearBahia->PerformLayout();
+			this->TBAlmacenarProduct->ResumeLayout(false);
+			this->TBAlmacenarProduct->PerformLayout();
+			this->TBRetirar->ResumeLayout(false);
+			this->TBRetirar->PerformLayout();
+			this->TPEliminar->ResumeLayout(false);
+			this->TPEliminar->PerformLayout();
+			this->TPInventario->ResumeLayout(false);
+			this->TPInventario->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -203,7 +833,8 @@ namespace BodegaGrid {
 					DGVBodega->Rows->Add();
 					DGVBodega->Rows[i]->HeaderCell->Value = Abecedario[i];
 				}
-				
+				BIngresarBodega->Enabled = false;
+				TBCMenuOpciones->Enabled = true;
 				
 			}
 		}
@@ -212,5 +843,7 @@ namespace BodegaGrid {
 
 		}
 	}
+    
+
 };
 }
