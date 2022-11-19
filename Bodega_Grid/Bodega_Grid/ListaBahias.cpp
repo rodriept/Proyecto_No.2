@@ -20,3 +20,11 @@ void ListaBahias::SetPesoUtilizado(int _Peso)
 {
 	PesoUtilizado = _Peso;
 }
+void ListaBahias::SetCantUnidades(int _Unidad)
+{
+	CantidadUnidades += _Unidad;
+}
+int ListaBahias::GetCantUnidades()
+{
+	return CantidadUnidades;
+}

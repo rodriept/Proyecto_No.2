@@ -170,6 +170,8 @@ private: System::Windows::Forms::Label^ label21;
 			this->BCrearBahiaNoIngresar = (gcnew System::Windows::Forms::Button());
 			this->BCrearBahiaNuevaBahia = (gcnew System::Windows::Forms::Button());
 			this->TBAlmacenarProduct = (gcnew System::Windows::Forms::TabPage());
+			this->TBAlmacenarNombreRespon = (gcnew System::Windows::Forms::TextBox());
+			this->label21 = (gcnew System::Windows::Forms::Label());
 			this->label20 = (gcnew System::Windows::Forms::Label());
 			this->BAlmacenarProduct = (gcnew System::Windows::Forms::Button());
 			this->TBAlmacenarFechaAlmacenaje = (gcnew System::Windows::Forms::TextBox());
@@ -197,8 +199,6 @@ private: System::Windows::Forms::Label^ label21;
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->TPBodega = (gcnew System::Windows::Forms::TabPage());
-			this->label21 = (gcnew System::Windows::Forms::Label());
-			this->TBAlmacenarNombreRespon = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGVBodega))->BeginInit();
 			this->TBCMenuOpciones->SuspendLayout();
 			this->TPCrearBahia->SuspendLayout();
@@ -550,6 +550,22 @@ private: System::Windows::Forms::Label^ label21;
 			this->TBAlmacenarProduct->Text = L"Almacenar producto";
 			this->TBAlmacenarProduct->UseVisualStyleBackColor = true;
 			// 
+			// TBAlmacenarNombreRespon
+			// 
+			this->TBAlmacenarNombreRespon->Location = System::Drawing::Point(283, 149);
+			this->TBAlmacenarNombreRespon->Name = L"TBAlmacenarNombreRespon";
+			this->TBAlmacenarNombreRespon->Size = System::Drawing::Size(162, 20);
+			this->TBAlmacenarNombreRespon->TabIndex = 34;
+			// 
+			// label21
+			// 
+			this->label21->AutoSize = true;
+			this->label21->Location = System::Drawing::Point(230, 152);
+			this->label21->Name = L"label21";
+			this->label21->Size = System::Drawing::Size(47, 13);
+			this->label21->TabIndex = 33;
+			this->label21->Text = L"Nombre:";
+			// 
 			// label20
 			// 
 			this->label20->AutoSize = true;
@@ -598,12 +614,13 @@ private: System::Windows::Forms::Label^ label21;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(53, 145);
+			this->button1->Location = System::Drawing::Point(47, 145);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(104, 23);
 			this->button1->TabIndex = 39;
 			this->button1->Text = L"Retirar Producto";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Bodega::button1_Click_1);
 			// 
 			// label13
 			// 
@@ -812,22 +829,6 @@ private: System::Windows::Forms::Label^ label21;
 			this->TPBodega->Text = L"Bodegas";
 			this->TPBodega->UseVisualStyleBackColor = true;
 			// 
-			// label21
-			// 
-			this->label21->AutoSize = true;
-			this->label21->Location = System::Drawing::Point(230, 152);
-			this->label21->Name = L"label21";
-			this->label21->Size = System::Drawing::Size(47, 13);
-			this->label21->TabIndex = 33;
-			this->label21->Text = L"Nombre:";
-			// 
-			// TBAlmacenarNombreRespon
-			// 
-			this->TBAlmacenarNombreRespon->Location = System::Drawing::Point(283, 149);
-			this->TBAlmacenarNombreRespon->Name = L"TBAlmacenarNombreRespon";
-			this->TBAlmacenarNombreRespon->Size = System::Drawing::Size(162, 20);
-			this->TBAlmacenarNombreRespon->TabIndex = 34;
-			// 
 			// Bodega
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1004,9 +1005,11 @@ private: System::Windows::Forms::Label^ label21;
     }
     private: System::Void BAlmacenarProduct_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
+		
 		String^ CodigoAlmacenamiento;
 		String^ TipoProducto;
 		int PesoProducto, CantUnidades, PesoUtilizado, posicion = -1;
+		int UltimoPeso, CantUnidadesSobrantes, CantUnidadesIngresadas, posicion2 = -1;
 		String^ FechaAlmacenaje;
 		String^ NombreResponsable;
 		try
@@ -1019,45 +1022,88 @@ private: System::Windows::Forms::Label^ label21;
 			{
 				CodigoAlmacenamiento = TBAlmacenarCodigoAlmacen->Text;
 				TipoProducto = TBAlmacenarProductoTipo->Text;
-				array<String^>^ CodigoAlmace = gcnew array<String^>(2);
-				CodigoAlmace = CodigoAlmacenamiento->Split('-');
+				array<String^>^ CodigoAlmacen = gcnew array<String^>(2);
+				CodigoAlmacen = CodigoAlmacenamiento->Split('-');
 				for (int i = 0; i < DGVBodega->Rows->Count; i++) //Pasar la letra de la fila a un entero
 				{
 					String^ Verificar = Convert::ToString(DGVBodega->Rows[i]->HeaderCell->Value);
-					if (Verificar == CodigoAlmace[0])
+					if (Verificar == CodigoAlmacen[0])
 					{
 						posicion = i;
 						break;
 					}
 				}
-				if (DGVBodega->Rows[posicion]->Cells[Convert::ToInt32(CodigoAlmace[1])-1]->Value == nullptr)
+				if (DGVBodega->Rows[posicion]->Cells[Convert::ToInt32(CodigoAlmacen[1])-1]->Value == nullptr) //Si no se encuentra vacío el espacio
 				{
 					MessageBox::Show("El espacio se encuentra vacía en la bodega", "ERROR: Espacio vacío", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				}
-				else
+				else //Si la casilla se enceuntra con una bahía
 				{
 					for (int i = 0; i < ContBahias; i++)
 					{
 						if (CodigoAlmacenamiento == MisBahias[i]->GetID() && TipoProducto == MisBahias[i]->GetTipo())
 						{
+							
 							PesoProducto = Convert::ToInt32(TBAlmacenarPesoProducto->Text);
 							CantUnidades = Convert::ToInt32(TBAlmacenarCantUnidades->Text);
 							FechaAlmacenaje = TBAlmacenarFechaAlmacenaje->Text;
 							NombreResponsable = TBAlmacenarNombreRespon->Text;
 							PesoUtilizado = PesoProducto * CantUnidades + MisBahias[i]->GetPesoUtilizado();
-							if (PesoUtilizado < MisBahias[i]->GetPesoMax())
+							if (PesoUtilizado < MisBahias[i]->GetPesoMax()) //Si el peso es menor al peso máximo
 							{
 								MisBahias[i]->SetPesoUtilizado(PesoUtilizado);
 								MisAlmacenamientos[ContAlmacenamientos] = gcnew AlmacenarProducto(TipoProducto, CantUnidades, PesoProducto, FechaAlmacenaje, NombreResponsable);
 								MisBahias[i]->SetPesoUtilizado(PesoUtilizado);
 								ContAlmacenamientos++;
-								DGVBodega->Rows[posicion]->Cells[Convert::ToInt32(CodigoAlmace[1]) - 1]->Value = MisBahias[i]->GetID() + " " + MisBahias[i]->GetTipo() + " Peso Max: " + MisBahias[i]->GetPesoMax() + " Peso utilizado: " + MisBahias[i]->GetPesoUtilizado();
+								MisBahias[i]->SetCantUnidades(CantUnidades);
+								DGVBodega->Rows[posicion]->Cells[Convert::ToInt32(CodigoAlmacen[1]) - 1]->Value = "{0} Material:{1} Unidades:{2} Peso Max:{3} Peso Utilizado:{4}"  + MisBahias[i]->GetID(),MisBahias[i]->GetCantUnidades(), MisBahias[i]->GetPesoMax(), MisBahias[i]->GetPesoUtilizado();
 							}
-							else
+							else // Si el peso se excedió 
 							{
+								for (int j = 0; j < CantUnidades; j++) //Para ingresar el máximo de peso a la bahía
+								{
+									PesoUtilizado = PesoProducto * i + MisBahias[i]->GetPesoUtilizado();
+									if (PesoUtilizado < MisBahias[i]->GetPesoMax())
+									{
+										UltimoPeso = PesoUtilizado;
+										CantUnidadesSobrantes = CantUnidades - i;
+										CantUnidadesIngresadas = i;
+									}
+								}
+								MisBahias[i]->SetPesoUtilizado(UltimoPeso);
+								MisBahias[i]->SetCantUnidades(CantUnidadesIngresadas);
+								for (int j = 0; j < ContBahias; j++)//Ingresar el sobrante a otra bahía con el mismo producto
+								{
+									array<String^>^ CantidadProductos =  gcnew array<String^>(Convert::ToInt32(MisBahias[j]->GetTipo()->Split('-')));
+									for (int k = 0; k < CantidadProductos->Length; k++)
+									{
+										if (CantidadProductos[k] == TipoProducto)
+										{
+											PesoUtilizado = PesoProducto * CantUnidadesSobrantes + MisBahias[j]->GetPesoUtilizado();
+											if (PesoUtilizado < MisBahias[j]->GetPesoMax())
+											{
+												MisBahias[j]->SetPesoUtilizado(PesoUtilizado);
+												for (int L = 0; L < DGVBodega->Rows->Count; L++) //Pasar la letra de la fila a un entero
+												{
+													String^ Verificar = Convert::ToString(DGVBodega->Rows[i]->HeaderCell->Value);
+													array<String^>^ CodigoAlmacen2 = gcnew array<String^>(2);
+													CodigoAlmacen2 = MisBahias[j]->GetID()->Split('-');
+													if (Verificar == CodigoAlmacen2[L])
+													{
+														posicion2 = L;
+														int ColumnBahia = Convert::ToInt32(CodigoAlmacen2[1]);
+														MisBahias[j]->SetCantUnidades(CantUnidadesSobrantes);
+														DGVBodega->Rows[posicion2]->Cells[ColumnBahia - 1]->Value = "{0} Material:{1} Unidades:{2} Peso Max:{3} Peso Utilizado:{4}" + MisBahias[j]->GetID(), MisBahias[j]->GetCantUnidades(), MisBahias[j]->GetPesoMax(), MisBahias[j]->GetPesoUtilizado();;
+														break;
+													}
+												}
+											}
+										}
+									}
+								}
 
 							}
-
+							break;
 						}
 					}
 				}
@@ -1069,5 +1115,7 @@ private: System::Windows::Forms::Label^ label21;
 
 		}
     }
+private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
