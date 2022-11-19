@@ -112,6 +112,10 @@ namespace BodegaGrid {
 	private: System::Windows::Forms::Button^ BInventarioOrdenar;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Label^ label19;
+	private: System::Windows::Forms::Button^ BCrearBahiaNuevaBahia;
+
+	private: System::Windows::Forms::Button^ BCrearBahiaNoIngresar;
+
 
 	protected:
 
@@ -159,6 +163,8 @@ namespace BodegaGrid {
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->TBCMenuOpciones = (gcnew System::Windows::Forms::TabControl());
 			this->TPCrearBahia = (gcnew System::Windows::Forms::TabPage());
+			this->BCrearBahiaNoIngresar = (gcnew System::Windows::Forms::Button());
+			this->BCrearBahiaNuevaBahia = (gcnew System::Windows::Forms::Button());
 			this->TBAlmacenarProduct = (gcnew System::Windows::Forms::TabPage());
 			this->BAlmacenarProduct = (gcnew System::Windows::Forms::Button());
 			this->TBAlmacenarFechaAlmacenaje = (gcnew System::Windows::Forms::TextBox());
@@ -326,7 +332,7 @@ namespace BodegaGrid {
 			// 
 			// TBCrearBahiaProducto
 			// 
-			this->TBCrearBahiaProducto->Location = System::Drawing::Point(165, 69);
+			this->TBCrearBahiaProducto->Location = System::Drawing::Point(140, 69);
 			this->TBCrearBahiaProducto->Name = L"TBCrearBahiaProducto";
 			this->TBCrearBahiaProducto->Size = System::Drawing::Size(100, 20);
 			this->TBCrearBahiaProducto->TabIndex = 15;
@@ -349,7 +355,8 @@ namespace BodegaGrid {
 			// 
 			// BCrearBahiaIngresar
 			// 
-			this->BCrearBahiaIngresar->Location = System::Drawing::Point(168, 137);
+			this->BCrearBahiaIngresar->Enabled = false;
+			this->BCrearBahiaIngresar->Location = System::Drawing::Point(131, 137);
 			this->BCrearBahiaIngresar->Name = L"BCrearBahiaIngresar";
 			this->BCrearBahiaIngresar->Size = System::Drawing::Size(88, 23);
 			this->BCrearBahiaIngresar->TabIndex = 18;
@@ -359,7 +366,7 @@ namespace BodegaGrid {
 			// 
 			// BCrearBahiaOtroProduct
 			// 
-			this->BCrearBahiaOtroProduct->Location = System::Drawing::Point(271, 60);
+			this->BCrearBahiaOtroProduct->Location = System::Drawing::Point(258, 60);
 			this->BCrearBahiaOtroProduct->Name = L"BCrearBahiaOtroProduct";
 			this->BCrearBahiaOtroProduct->Size = System::Drawing::Size(111, 36);
 			this->BCrearBahiaOtroProduct->TabIndex = 19;
@@ -469,6 +476,8 @@ namespace BodegaGrid {
 			// 
 			// TPCrearBahia
 			// 
+			this->TPCrearBahia->Controls->Add(this->BCrearBahiaNoIngresar);
+			this->TPCrearBahia->Controls->Add(this->BCrearBahiaNuevaBahia);
 			this->TPCrearBahia->Controls->Add(this->LCrearBahia);
 			this->TPCrearBahia->Controls->Add(this->LCrerBahiaFila);
 			this->TPCrearBahia->Controls->Add(this->LCrerBahiaColumn);
@@ -487,6 +496,27 @@ namespace BodegaGrid {
 			this->TPCrearBahia->TabIndex = 0;
 			this->TPCrearBahia->Text = L"Crear Bahía";
 			this->TPCrearBahia->UseVisualStyleBackColor = true;
+			// 
+			// BCrearBahiaNoIngresar
+			// 
+			this->BCrearBahiaNoIngresar->Location = System::Drawing::Point(375, 67);
+			this->BCrearBahiaNoIngresar->Name = L"BCrearBahiaNoIngresar";
+			this->BCrearBahiaNoIngresar->Size = System::Drawing::Size(75, 23);
+			this->BCrearBahiaNoIngresar->TabIndex = 21;
+			this->BCrearBahiaNoIngresar->Text = L"No ingresar";
+			this->BCrearBahiaNoIngresar->UseVisualStyleBackColor = true;
+			this->BCrearBahiaNoIngresar->Click += gcnew System::EventHandler(this, &Bodega::button3_Click);
+			// 
+			// BCrearBahiaNuevaBahia
+			// 
+			this->BCrearBahiaNuevaBahia->Enabled = false;
+			this->BCrearBahiaNuevaBahia->Location = System::Drawing::Point(225, 137);
+			this->BCrearBahiaNuevaBahia->Name = L"BCrearBahiaNuevaBahia";
+			this->BCrearBahiaNuevaBahia->Size = System::Drawing::Size(110, 23);
+			this->BCrearBahiaNuevaBahia->TabIndex = 20;
+			this->BCrearBahiaNuevaBahia->Text = L"Crear nueva Bahía";
+			this->BCrearBahiaNuevaBahia->UseVisualStyleBackColor = true;
+			this->BCrearBahiaNuevaBahia->Click += gcnew System::EventHandler(this, &Bodega::button2_Click);
 			// 
 			// TBAlmacenarProduct
 			// 
@@ -518,6 +548,7 @@ namespace BodegaGrid {
 			this->BAlmacenarProduct->TabIndex = 31;
 			this->BAlmacenarProduct->Text = L"Almacenar Producto";
 			this->BAlmacenarProduct->UseVisualStyleBackColor = true;
+			this->BAlmacenarProduct->Click += gcnew System::EventHandler(this, &Bodega::BAlmacenarProduct_Click);
 			// 
 			// TBAlmacenarFechaAlmacenaje
 			// 
@@ -798,8 +829,9 @@ namespace BodegaGrid {
 #pragma endregion
 		array<ListaBahias^>^ MisBahias;
 		int FilaBodega, ColumnaBodega;
-		int ContBahias = 0;
-		String^ TipoProducto;
+		int ContBahias = 0, CantProductos = 0;
+		String^ TipoProducto = "";
+		
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 		
@@ -837,8 +869,6 @@ namespace BodegaGrid {
 			MessageBox::Show("Ingrese las filas o columnas de la bodega", "Error: Bodega no ingresada", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-    
-
     private: System::Void BCrearBahiaIngresar_Click(System::Object^ sender, System::EventArgs^ e) 
     {
 		array<String^>^ Abecedario = { "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z" };
@@ -871,12 +901,23 @@ namespace BodegaGrid {
 			}
 			else
 			{
-				ID = IngresoFila + IngresoColumna;
-				TipoProducto = TBCrearBahiaProducto->Text;
-				PesoMaximo = Convert::ToInt32(TBCrearBahiaPesoMax->Text);
-				MisBahias[ContBahias] = gcnew ListaBahias(TipoProducto,PesoMaximo, ID);
-				ContBahias++;
-				DGVBodega->Rows[I]->Cells[IngresoColumna]->Value = ID + "\n" + TipoProducto + "\n" + PesoMaximo + "\n" + "Peso Utilizado";
+				
+				if (TipoProducto == "")
+				{
+					TipoProducto = TBCrearBahiaProducto->Text;
+					TipoProducto = TipoProducto->ToLower();
+					CantProductos++;
+				}
+				else
+				{
+					ID = IngresoFila + IngresoColumna;
+					PesoMaximo = Convert::ToInt32(TBCrearBahiaPesoMax->Text);
+					MisBahias[ContBahias] = gcnew ListaBahias(TipoProducto, PesoMaximo, ID);
+					ContBahias++;
+					DGVBodega->Rows[I]->Cells[IngresoColumna]->Value = ID + " " + PesoMaximo + " Peso Utilizado: " + 0;
+					BCrearBahiaNuevaBahia->Enabled = true;
+				}
+				
 			}
 		}
 		catch (...)
@@ -886,15 +927,60 @@ namespace BodegaGrid {
     }
     private: System::Void BCrearBahiaOtroProduct_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-		if (TipoProducto == TBCrearBahiaProducto->Text)
+		if (TipoProducto == "")
 		{
-			MessageBox::Show("Ingrese otro tipo de producto", "Error: Tipo de producto es igual al anterior", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			TipoProducto = TBCrearBahiaProducto->Text;
+			TipoProducto = TipoProducto->ToLower();
+			CantProductos++;
+	
+		}
+		else if (TBCrearBahiaProducto->Text == "")
+		{
+			MessageBox::Show("Ingrese un producto", "Error: No se ingreso un producto", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		else
-		{
+		{	
 			TipoProducto += "," + TBCrearBahiaProducto->Text;
+			TipoProducto = TipoProducto->ToLower();
+			CantProductos++;
 		}
     }
+    private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		BCrearBahiaIngresar->Enabled = false;
+		BCrearBahiaOtroProduct->Enabled = true;
+		BCrearBahiaNoIngresar->Enabled = true;
+		BCrearBahiaNuevaBahia->Enabled = false;
+		TBCrearBahiaFila->Text = "";
+		TBCrearBahiaPesoMax->Text = "";
+		TBCrearBahiaProducto->Text = "";
+		TBCrearColumnaBahia->Text = "";
+		TipoProducto = "";
+    }
+    private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		BCrearBahiaIngresar->Enabled = true;
+		BCrearBahiaOtroProduct->Enabled = false;
+		BCrearBahiaNoIngresar->Enabled = false;
+		
+    }
+    private: System::Void BAlmacenarProduct_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		try
+		{
+			if (TBAlmacenarCantUnidades->Text == "" || TBAlmacenarFechaAlmacenaje->Text == "" || TBAlmacenarPesoProducto->Text == "" || TBAlmacenarProductoTipo->Text == "" || TBAlmacenarCodigoAlmacen->Text == "")
+			{
+				MessageBox::Show("Ingrese todos los datos para almacenar el producto", "Error: Datos incompletos", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+			else
+			{
 
+			}
+		}
+		catch (...)
+		{
+
+		}
+    }
 };
 }
