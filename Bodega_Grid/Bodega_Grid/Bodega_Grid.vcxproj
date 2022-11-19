@@ -130,6 +130,7 @@
     <ClCompile Include="AlmacenarProducto.cpp" />
     <ClCompile Include="Bodega.cpp" />
     <ClCompile Include="ListaBahias.cpp" />
+    <ClCompile Include="ListaRetirarProduct.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlmacenarProducto.h" />
@@ -137,6 +138,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ListaBahias.h" />
+    <ClInclude Include="ListaRetirarProduct.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Bodega.resx">
