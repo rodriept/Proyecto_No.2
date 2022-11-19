@@ -1,5 +1,5 @@
 #pragma once
-
+#include "ListaBahias.h"
 namespace BodegaGrid {
 
 	using namespace System;
@@ -14,6 +14,7 @@ namespace BodegaGrid {
 	/// </summary>
 	public ref class Bodega : public System::Windows::Forms::Form
 	{
+	
 	public:
 		Bodega(void)
 		{
@@ -48,9 +49,6 @@ namespace BodegaGrid {
 	private: System::Windows::Forms::Label^ LCrerBahiaColumn;
 	private: System::Windows::Forms::TextBox^ TBCrearColumnaBahia;
 
-
-
-
 	private: System::Windows::Forms::TextBox^ TBCrearBahiaFila;
 
 	private: System::Windows::Forms::Label^ LCrerBahiaProduct;
@@ -58,11 +56,6 @@ namespace BodegaGrid {
 	private: System::Windows::Forms::Label^ LCrearBahiaPeso;
 	private: System::Windows::Forms::TextBox^ TBCrearBahiaPesoMax;
 	private: System::Windows::Forms::Button^ BCrearBahiaIngresar;
-
-
-
-
-
 
 	private: System::Windows::Forms::Button^ BCrearBahiaOtroProduct;
 	private: System::Windows::Forms::Label^ label5;
@@ -120,15 +113,6 @@ namespace BodegaGrid {
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Label^ label19;
 
-
-
-
-
-
-
-
-
-
 	protected:
 
 	private:
@@ -179,6 +163,7 @@ namespace BodegaGrid {
 			this->BAlmacenarProduct = (gcnew System::Windows::Forms::Button());
 			this->TBAlmacenarFechaAlmacenaje = (gcnew System::Windows::Forms::TextBox());
 			this->TBRetirar = (gcnew System::Windows::Forms::TabPage());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->TBRetirarNombResponsable = (gcnew System::Windows::Forms::TextBox());
 			this->TBRetirarTipoProduct = (gcnew System::Windows::Forms::TextBox());
@@ -189,19 +174,18 @@ namespace BodegaGrid {
 			this->label16 = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->TPEliminar = (gcnew System::Windows::Forms::TabPage());
-			this->TPInventario = (gcnew System::Windows::Forms::TabPage());
-			this->TPBodega = (gcnew System::Windows::Forms::TabPage());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->label17 = (gcnew System::Windows::Forms::Label());
-			this->label18 = (gcnew System::Windows::Forms::Label());
-			this->TBEliminarColumn = (gcnew System::Windows::Forms::TextBox());
-			this->TBEliminarFila = (gcnew System::Windows::Forms::TextBox());
 			this->BEliminarBahia = (gcnew System::Windows::Forms::Button());
-			this->label19 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->BInventarioOrdenar = (gcnew System::Windows::Forms::Button());
+			this->TBEliminarFila = (gcnew System::Windows::Forms::TextBox());
+			this->TBEliminarColumn = (gcnew System::Windows::Forms::TextBox());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->TPInventario = (gcnew System::Windows::Forms::TabPage());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->BInventarioOrdenar = (gcnew System::Windows::Forms::Button());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->TPBodega = (gcnew System::Windows::Forms::TabPage());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGVBodega))->BeginInit();
 			this->TBCMenuOpciones->SuspendLayout();
 			this->TPCrearBahia->SuspendLayout();
@@ -226,11 +210,13 @@ namespace BodegaGrid {
 			// 
 			// DGVBodega
 			// 
+			this->DGVBodega->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->DGVBodega->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->DGVBodega->Location = System::Drawing::Point(46, 355);
+			this->DGVBodega->Location = System::Drawing::Point(16, 355);
 			this->DGVBodega->Name = L"DGVBodega";
 			this->DGVBodega->ReadOnly = true;
-			this->DGVBodega->Size = System::Drawing::Size(403, 267);
+			this->DGVBodega->RowHeadersWidth = 45;
+			this->DGVBodega->Size = System::Drawing::Size(462, 303);
 			this->DGVBodega->TabIndex = 1;
 			// 
 			// label2
@@ -369,6 +355,7 @@ namespace BodegaGrid {
 			this->BCrearBahiaIngresar->TabIndex = 18;
 			this->BCrearBahiaIngresar->Text = L"Ingresar Bahía";
 			this->BCrearBahiaIngresar->UseVisualStyleBackColor = true;
+			this->BCrearBahiaIngresar->Click += gcnew System::EventHandler(this, &Bodega::BCrearBahiaIngresar_Click);
 			// 
 			// BCrearBahiaOtroProduct
 			// 
@@ -378,6 +365,7 @@ namespace BodegaGrid {
 			this->BCrearBahiaOtroProduct->TabIndex = 19;
 			this->BCrearBahiaOtroProduct->Text = L"Ingresar otro producto a la bahía";
 			this->BCrearBahiaOtroProduct->UseVisualStyleBackColor = true;
+			this->BCrearBahiaOtroProduct->Click += gcnew System::EventHandler(this, &Bodega::BCrearBahiaOtroProduct_Click);
 			// 
 			// label5
 			// 
@@ -558,6 +546,15 @@ namespace BodegaGrid {
 			this->TBRetirar->Text = L"Retirar Producto";
 			this->TBRetirar->UseVisualStyleBackColor = true;
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(53, 145);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(104, 23);
+			this->button1->TabIndex = 39;
+			this->button1->Text = L"Retirar Producto";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
@@ -650,6 +647,59 @@ namespace BodegaGrid {
 			this->TPEliminar->Text = L"Eliminar Bahía";
 			this->TPEliminar->UseVisualStyleBackColor = true;
 			// 
+			// BEliminarBahia
+			// 
+			this->BEliminarBahia->Location = System::Drawing::Point(50, 81);
+			this->BEliminarBahia->Name = L"BEliminarBahia";
+			this->BEliminarBahia->Size = System::Drawing::Size(75, 23);
+			this->BEliminarBahia->TabIndex = 9;
+			this->BEliminarBahia->Text = L"Ingresar";
+			this->BEliminarBahia->UseVisualStyleBackColor = true;
+			// 
+			// TBEliminarFila
+			// 
+			this->TBEliminarFila->Location = System::Drawing::Point(13, 55);
+			this->TBEliminarFila->Name = L"TBEliminarFila";
+			this->TBEliminarFila->Size = System::Drawing::Size(49, 20);
+			this->TBEliminarFila->TabIndex = 4;
+			// 
+			// TBEliminarColumn
+			// 
+			this->TBEliminarColumn->Location = System::Drawing::Point(114, 55);
+			this->TBEliminarColumn->Name = L"TBEliminarColumn";
+			this->TBEliminarColumn->Size = System::Drawing::Size(49, 20);
+			this->TBEliminarColumn->TabIndex = 3;
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(111, 39);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(51, 13);
+			this->label18->TabIndex = 2;
+			this->label18->Text = L"Columna:";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->Location = System::Drawing::Point(20, 39);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(26, 13);
+			this->label17->TabIndex = 1;
+			this->label17->Text = L"Fila:";
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Marcellus SC", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label12->Location = System::Drawing::Point(6, 3);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(133, 22);
+			this->label12->TabIndex = 0;
+			this->label12->Text = L"Eliminar Bahía";
+			// 
 			// TPInventario
 			// 
 			this->TPInventario->Controls->Add(this->dataGridView1);
@@ -664,77 +714,31 @@ namespace BodegaGrid {
 			this->TPInventario->Text = L"Inventario";
 			this->TPInventario->UseVisualStyleBackColor = true;
 			// 
-			// TPBodega
+			// dataGridView1
 			// 
-			this->TPBodega->Location = System::Drawing::Point(4, 22);
-			this->TPBodega->Name = L"TPBodega";
-			this->TPBodega->Padding = System::Windows::Forms::Padding(3);
-			this->TPBodega->Size = System::Drawing::Size(462, 217);
-			this->TPBodega->TabIndex = 5;
-			this->TPBodega->Text = L"Bodegas";
-			this->TPBodega->UseVisualStyleBackColor = true;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Location = System::Drawing::Point(170, 21);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->Size = System::Drawing::Size(240, 150);
+			this->dataGridView1->TabIndex = 3;
 			// 
-			// button1
+			// BInventarioOrdenar
 			// 
-			this->button1->Location = System::Drawing::Point(53, 145);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(104, 23);
-			this->button1->TabIndex = 39;
-			this->button1->Text = L"Retirar Producto";
-			this->button1->UseVisualStyleBackColor = true;
+			this->BInventarioOrdenar->Location = System::Drawing::Point(30, 68);
+			this->BInventarioOrdenar->Name = L"BInventarioOrdenar";
+			this->BInventarioOrdenar->Size = System::Drawing::Size(75, 23);
+			this->BInventarioOrdenar->TabIndex = 2;
+			this->BInventarioOrdenar->Text = L"Ordenar";
+			this->BInventarioOrdenar->UseVisualStyleBackColor = true;
 			// 
-			// label12
+			// comboBox1
 			// 
-			this->label12->AutoSize = true;
-			this->label12->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Marcellus SC", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(6, 3);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(133, 22);
-			this->label12->TabIndex = 0;
-			this->label12->Text = L"Eliminar Bahía";
-			// 
-			// label17
-			// 
-			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(20, 39);
-			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(26, 13);
-			this->label17->TabIndex = 1;
-			this->label17->Text = L"Fila:";
-			// 
-			// label18
-			// 
-			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(111, 39);
-			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(51, 13);
-			this->label18->TabIndex = 2;
-			this->label18->Text = L"Columna:";
-			// 
-			// TBEliminarColumn
-			// 
-			this->TBEliminarColumn->Location = System::Drawing::Point(114, 55);
-			this->TBEliminarColumn->Name = L"TBEliminarColumn";
-			this->TBEliminarColumn->Size = System::Drawing::Size(49, 20);
-			this->TBEliminarColumn->TabIndex = 3;
-			// 
-			// TBEliminarFila
-			// 
-			this->TBEliminarFila->Location = System::Drawing::Point(13, 55);
-			this->TBEliminarFila->Name = L"TBEliminarFila";
-			this->TBEliminarFila->Size = System::Drawing::Size(49, 20);
-			this->TBEliminarFila->TabIndex = 4;
-			// 
-			// BEliminarBahia
-			// 
-			this->BEliminarBahia->Location = System::Drawing::Point(50, 81);
-			this->BEliminarBahia->Name = L"BEliminarBahia";
-			this->BEliminarBahia->Size = System::Drawing::Size(75, 23);
-			this->BEliminarBahia->TabIndex = 9;
-			this->BEliminarBahia->Text = L"Ingresar";
-			this->BEliminarBahia->UseVisualStyleBackColor = true;
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Tipo de producto", L"Peso unitario", L"Fecha de ingreso del pedido" });
+			this->comboBox1->Location = System::Drawing::Point(6, 41);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 21);
+			this->comboBox1->TabIndex = 1;
 			// 
 			// label19
 			// 
@@ -748,31 +752,15 @@ namespace BodegaGrid {
 			this->label19->TabIndex = 0;
 			this->label19->Text = L"Inventario:";
 			// 
-			// comboBox1
+			// TPBodega
 			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Tipo de producto", L"Peso unitario", L"Fecha de ingreso del pedido" });
-			this->comboBox1->Location = System::Drawing::Point(6, 41);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 21);
-			this->comboBox1->TabIndex = 1;
-			// 
-			// BInventarioOrdenar
-			// 
-			this->BInventarioOrdenar->Location = System::Drawing::Point(30, 68);
-			this->BInventarioOrdenar->Name = L"BInventarioOrdenar";
-			this->BInventarioOrdenar->Size = System::Drawing::Size(75, 23);
-			this->BInventarioOrdenar->TabIndex = 2;
-			this->BInventarioOrdenar->Text = L"Ordenar";
-			this->BInventarioOrdenar->UseVisualStyleBackColor = true;
-			// 
-			// dataGridView1
-			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(170, 21);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(240, 150);
-			this->dataGridView1->TabIndex = 3;
+			this->TPBodega->Location = System::Drawing::Point(4, 22);
+			this->TPBodega->Name = L"TPBodega";
+			this->TPBodega->Padding = System::Windows::Forms::Padding(3);
+			this->TPBodega->Size = System::Drawing::Size(462, 217);
+			this->TPBodega->TabIndex = 5;
+			this->TPBodega->Text = L"Bodegas";
+			this->TPBodega->UseVisualStyleBackColor = true;
 			// 
 			// Bodega
 			// 
@@ -808,9 +796,13 @@ namespace BodegaGrid {
 
 		}
 #pragma endregion
+		array<ListaBahias^>^ MisBahias;
+		int FilaBodega, ColumnaBodega;
+		int ContBahias = 0;
+		String^ TipoProducto;
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-		int Fila, Columna;
+		
 		try
 		{
 			array<String^>^ Abecedario = { "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
@@ -820,19 +812,20 @@ namespace BodegaGrid {
 			}
 			else
 			{
-				Fila = Convert::ToInt32(TBBodegaFila->Text);
-				Columna = Convert::ToInt32(TBBodegaColumn->Text);
-				for (int i = 0; i < Columna; i++)
+				FilaBodega = Convert::ToInt32(TBBodegaFila->Text);
+				ColumnaBodega = Convert::ToInt32(TBBodegaColumn->Text);
+				for (int i = 0; i < ColumnaBodega; i++)
 				{
 					DataGridViewTextBoxColumn^ columnaHeader = gcnew DataGridViewTextBoxColumn();
 					columnaHeader->HeaderText = Convert::ToString(i + 1);
 					DGVBodega->Columns->Add(columnaHeader);
 				}
-				for (int i = 0; i < Fila; i++)
+				for (int i = 0; i < FilaBodega; i++)
 				{
 					DGVBodega->Rows->Add();
 					DGVBodega->Rows[i]->HeaderCell->Value = Abecedario[i];
 				}
+				MisBahias = gcnew array<ListaBahias^>(FilaBodega*ColumnaBodega);
 				BIngresarBodega->Enabled = false;
 				TBCMenuOpciones->Enabled = true;
 				
@@ -841,9 +834,67 @@ namespace BodegaGrid {
 		catch (...)
 		{
 
+			MessageBox::Show("Ingrese las filas o columnas de la bodega", "Error: Bodega no ingresada", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
     
+
+    private: System::Void BCrearBahiaIngresar_Click(System::Object^ sender, System::EventArgs^ e) 
+    {
+		array<String^>^ Abecedario = { "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z" };
+		int IngresoColumna, PesoMaximo, I;
+		bool VerificarFila = false;
+		String^ IngresoFila;
+		String^ Verificar;
+		String^ ID;
+		try
+		{
+			IngresoFila = TBCrearBahiaFila->Text;
+			IngresoColumna = Convert::ToInt32(TBCrearColumnaBahia->Text);
+			IngresoFila = IngresoFila->ToUpper();
+			for (int i = 0; i < DGVBodega->Rows->Count; i++)
+			{
+				Verificar = Convert::ToString(DGVBodega->Rows[i]->HeaderCell->Value);
+				if (IngresoFila == Verificar)
+				{
+					I = i;
+					VerificarFila = true;
+				}
+			}
+			if (TBCrearBahiaFila->Text == ""|| TBCrearColumnaBahia->Text == ""|| TBCrearBahiaPesoMax->Text == ""|| TBCrearBahiaProducto->Text == "")
+			{
+				MessageBox::Show("Ingrese todos los datos para crear una nueva bahía", "ERROR: Ingrese todos los datos", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+			else if(IngresoColumna > ColumnaBodega || VerificarFila == false)
+			{
+				MessageBox::Show("Se excecedió la fila o columna de la bodega", "Error: fila o columna mayor a la bodega", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+			else
+			{
+				ID = IngresoFila + IngresoColumna;
+				TipoProducto = TBCrearBahiaProducto->Text;
+				PesoMaximo = Convert::ToInt32(TBCrearBahiaPesoMax->Text);
+				MisBahias[ContBahias] = gcnew ListaBahias(TipoProducto,PesoMaximo, ID);
+				ContBahias++;
+				DGVBodega->Rows[I]->Cells[IngresoColumna]->Value = ID + "\n" + TipoProducto + "\n" + PesoMaximo + "\n" + "Peso Utilizado";
+			}
+		}
+		catch (...)
+		{
+				
+		}
+    }
+    private: System::Void BCrearBahiaOtroProduct_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		if (TipoProducto == TBCrearBahiaProducto->Text)
+		{
+			MessageBox::Show("Ingrese otro tipo de producto", "Error: Tipo de producto es igual al anterior", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		else
+		{
+			TipoProducto += "," + TBCrearBahiaProducto->Text;
+		}
+    }
 
 };
 }

@@ -128,11 +128,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bodega.cpp" />
+    <ClCompile Include="ListaBahias.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bodega.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ListaBahias.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Bodega.resx">
