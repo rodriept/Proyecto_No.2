@@ -1,5 +1,6 @@
 #pragma once
 #include "ListaBahias.h"
+#include "AlmacenarProducto.h"
 namespace BodegaGrid {
 
 	using namespace System;
@@ -115,6 +116,9 @@ namespace BodegaGrid {
 	private: System::Windows::Forms::Button^ BCrearBahiaNuevaBahia;
 
 	private: System::Windows::Forms::Button^ BCrearBahiaNoIngresar;
+private: System::Windows::Forms::Label^ label20;
+private: System::Windows::Forms::TextBox^ TBAlmacenarNombreRespon;
+private: System::Windows::Forms::Label^ label21;
 
 
 	protected:
@@ -166,6 +170,7 @@ namespace BodegaGrid {
 			this->BCrearBahiaNoIngresar = (gcnew System::Windows::Forms::Button());
 			this->BCrearBahiaNuevaBahia = (gcnew System::Windows::Forms::Button());
 			this->TBAlmacenarProduct = (gcnew System::Windows::Forms::TabPage());
+			this->label20 = (gcnew System::Windows::Forms::Label());
 			this->BAlmacenarProduct = (gcnew System::Windows::Forms::Button());
 			this->TBAlmacenarFechaAlmacenaje = (gcnew System::Windows::Forms::TextBox());
 			this->TBRetirar = (gcnew System::Windows::Forms::TabPage());
@@ -192,6 +197,8 @@ namespace BodegaGrid {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->TPBodega = (gcnew System::Windows::Forms::TabPage());
+			this->label21 = (gcnew System::Windows::Forms::Label());
+			this->TBAlmacenarNombreRespon = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGVBodega))->BeginInit();
 			this->TBCMenuOpciones->SuspendLayout();
 			this->TPCrearBahia->SuspendLayout();
@@ -520,6 +527,9 @@ namespace BodegaGrid {
 			// 
 			// TBAlmacenarProduct
 			// 
+			this->TBAlmacenarProduct->Controls->Add(this->TBAlmacenarNombreRespon);
+			this->TBAlmacenarProduct->Controls->Add(this->label21);
+			this->TBAlmacenarProduct->Controls->Add(this->label20);
 			this->TBAlmacenarProduct->Controls->Add(this->BAlmacenarProduct);
 			this->TBAlmacenarProduct->Controls->Add(this->TBAlmacenarFechaAlmacenaje);
 			this->TBAlmacenarProduct->Controls->Add(this->label5);
@@ -539,6 +549,15 @@ namespace BodegaGrid {
 			this->TBAlmacenarProduct->TabIndex = 1;
 			this->TBAlmacenarProduct->Text = L"Almacenar producto";
 			this->TBAlmacenarProduct->UseVisualStyleBackColor = true;
+			// 
+			// label20
+			// 
+			this->label20->AutoSize = true;
+			this->label20->Location = System::Drawing::Point(255, 34);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(38, 13);
+			this->label20->TabIndex = 32;
+			this->label20->Text = L"Ej. A-1";
 			// 
 			// BAlmacenarProduct
 			// 
@@ -793,6 +812,22 @@ namespace BodegaGrid {
 			this->TPBodega->Text = L"Bodegas";
 			this->TPBodega->UseVisualStyleBackColor = true;
 			// 
+			// label21
+			// 
+			this->label21->AutoSize = true;
+			this->label21->Location = System::Drawing::Point(230, 152);
+			this->label21->Name = L"label21";
+			this->label21->Size = System::Drawing::Size(47, 13);
+			this->label21->TabIndex = 33;
+			this->label21->Text = L"Nombre:";
+			// 
+			// TBAlmacenarNombreRespon
+			// 
+			this->TBAlmacenarNombreRespon->Location = System::Drawing::Point(283, 149);
+			this->TBAlmacenarNombreRespon->Name = L"TBAlmacenarNombreRespon";
+			this->TBAlmacenarNombreRespon->Size = System::Drawing::Size(162, 20);
+			this->TBAlmacenarNombreRespon->TabIndex = 34;
+			// 
 			// Bodega
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -828,8 +863,9 @@ namespace BodegaGrid {
 		}
 #pragma endregion
 		array<ListaBahias^>^ MisBahias;
+		array<AlmacenarProducto^>^ MisAlmacenamientos = gcnew array<AlmacenarProducto^>(100);
 		int FilaBodega, ColumnaBodega;
-		int ContBahias = 0, CantProductos = 0;
+		int ContBahias = 0, CantProductos = 0, ContAlmacenamientos = 0;
 		String^ TipoProducto = "";
 		
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -889,6 +925,7 @@ namespace BodegaGrid {
 				{
 					I = i;
 					VerificarFila = true;
+					break;
 				}
 			}
 			if (TBCrearBahiaFila->Text == ""|| TBCrearColumnaBahia->Text == ""|| TBCrearBahiaPesoMax->Text == ""|| TBCrearBahiaProducto->Text == "")
@@ -910,19 +947,20 @@ namespace BodegaGrid {
 				}
 				else
 				{
-					ID = IngresoFila + IngresoColumna;
+					ID = IngresoFila + "-" + IngresoColumna;
 					PesoMaximo = Convert::ToInt32(TBCrearBahiaPesoMax->Text);
 					MisBahias[ContBahias] = gcnew ListaBahias(TipoProducto, PesoMaximo, ID);
 					ContBahias++;
-					DGVBodega->Rows[I]->Cells[IngresoColumna]->Value = ID + " " + PesoMaximo + " Peso Utilizado: " + 0;
+					DGVBodega->Rows[I]->Cells[IngresoColumna - 1]->Value = ID + " " + TipoProducto + " PesoMax:" + PesoMaximo + " Peso Utilizado: " + 0;
 					BCrearBahiaNuevaBahia->Enabled = true;
+					BCrearBahiaIngresar->Enabled = false;
 				}
 				
 			}
 		}
 		catch (...)
 		{
-				
+			MessageBox::Show("Ingrese todos los datos para crear una nueva bahía", "ERROR: Ingrese todos los datos", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
     }
     private: System::Void BCrearBahiaOtroProduct_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -966,15 +1004,64 @@ namespace BodegaGrid {
     }
     private: System::Void BAlmacenarProduct_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
+		String^ CodigoAlmacenamiento;
+		String^ TipoProducto;
+		int PesoProducto, CantUnidades, PesoUtilizado, posicion = -1;
+		String^ FechaAlmacenaje;
+		String^ NombreResponsable;
 		try
 		{
-			if (TBAlmacenarCantUnidades->Text == "" || TBAlmacenarFechaAlmacenaje->Text == "" || TBAlmacenarPesoProducto->Text == "" || TBAlmacenarProductoTipo->Text == "" || TBAlmacenarCodigoAlmacen->Text == "")
+			if (TBAlmacenarCantUnidades->Text == "" || TBAlmacenarFechaAlmacenaje->Text == "" || TBAlmacenarPesoProducto->Text == "" || TBAlmacenarProductoTipo->Text == "" || TBAlmacenarCodigoAlmacen->Text == "" || TBAlmacenarNombreRespon->Text == "")
 			{
 				MessageBox::Show("Ingrese todos los datos para almacenar el producto", "Error: Datos incompletos", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 			else
 			{
+				CodigoAlmacenamiento = TBAlmacenarCodigoAlmacen->Text;
+				TipoProducto = TBAlmacenarProductoTipo->Text;
+				array<String^>^ CodigoAlmace = gcnew array<String^>(2);
+				CodigoAlmace = CodigoAlmacenamiento->Split('-');
+				for (int i = 0; i < DGVBodega->Rows->Count; i++) //Pasar la letra de la fila a un entero
+				{
+					String^ Verificar = Convert::ToString(DGVBodega->Rows[i]->HeaderCell->Value);
+					if (Verificar == CodigoAlmace[0])
+					{
+						posicion = i;
+						break;
+					}
+				}
+				if (DGVBodega->Rows[posicion]->Cells[Convert::ToInt32(CodigoAlmace[1])-1]->Value == nullptr)
+				{
+					MessageBox::Show("El espacio se encuentra vacía en la bodega", "ERROR: Espacio vacío", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
+				else
+				{
+					for (int i = 0; i < ContBahias; i++)
+					{
+						if (CodigoAlmacenamiento == MisBahias[i]->GetID() && TipoProducto == MisBahias[i]->GetTipo())
+						{
+							PesoProducto = Convert::ToInt32(TBAlmacenarPesoProducto->Text);
+							CantUnidades = Convert::ToInt32(TBAlmacenarCantUnidades->Text);
+							FechaAlmacenaje = TBAlmacenarFechaAlmacenaje->Text;
+							NombreResponsable = TBAlmacenarNombreRespon->Text;
+							PesoUtilizado = PesoProducto * CantUnidades + MisBahias[i]->GetPesoUtilizado();
+							if (PesoUtilizado < MisBahias[i]->GetPesoMax())
+							{
+								MisBahias[i]->SetPesoUtilizado(PesoUtilizado);
+								MisAlmacenamientos[ContAlmacenamientos] = gcnew AlmacenarProducto(TipoProducto, CantUnidades, PesoProducto, FechaAlmacenaje, NombreResponsable);
+								MisBahias[i]->SetPesoUtilizado(PesoUtilizado);
+								ContAlmacenamientos++;
+								DGVBodega->Rows[posicion]->Cells[Convert::ToInt32(CodigoAlmace[1]) - 1]->Value = MisBahias[i]->GetID() + " " + MisBahias[i]->GetTipo() + " Peso Max: " + MisBahias[i]->GetPesoMax() + " Peso utilizado: " + MisBahias[i]->GetPesoUtilizado();
+							}
+							else
+							{
 
+							}
+
+						}
+					}
+				}
+				
 			}
 		}
 		catch (...)

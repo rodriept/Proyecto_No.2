@@ -15,7 +15,7 @@ System::String^ AlmacenarProducto::GetNombreResponsable()
 {
 	return NombreResponsable;
 }
-int AlmacenarProducto::GetPesoUtilizado()
+int AlmacenarProducto::GetPesoProducto()
 {
-	return PesoUtilizado;
+	return PesoProducto;
 }
