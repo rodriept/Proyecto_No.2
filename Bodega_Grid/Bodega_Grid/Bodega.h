@@ -1,6 +1,7 @@
 #pragma once
 #include "ListaBahias.h"
 #include "AlmacenarProducto.h"
+#include "ListaRetirarProduct.h"
 namespace BodegaGrid {
 
 	using namespace System;
@@ -84,7 +85,7 @@ namespace BodegaGrid {
 	private: System::Windows::Forms::TabPage^ TBRetirar;
 	private: System::Windows::Forms::TabPage^ TPEliminar;
 	private: System::Windows::Forms::TabPage^ TPInventario;
-	private: System::Windows::Forms::TabPage^ TPBodega;
+
 	private: System::Windows::Forms::TextBox^ TBAlmacenarFechaAlmacenaje;
 
 	private: System::Windows::Forms::Button^ BAlmacenarProduct;
@@ -120,6 +121,13 @@ namespace BodegaGrid {
 private: System::Windows::Forms::Label^ label20;
 private: System::Windows::Forms::TextBox^ TBAlmacenarNombreRespon;
 private: System::Windows::Forms::Label^ label21;
+private: System::Windows::Forms::TextBox^ TBRetirarID;
+private: System::Windows::Forms::Label^ label22;
+private: System::Windows::Forms::Button^ BIngresarLaBodega;
+private: System::Windows::Forms::Button^ BIngresarInventario;
+private: System::Windows::Forms::Label^ label23;
+private: System::Windows::Forms::Button^ BSalir;
+private: System::Windows::Forms::Label^ label24;
 
 
 	protected:
@@ -177,6 +185,8 @@ private: System::Windows::Forms::Label^ label21;
 			this->BAlmacenarProduct = (gcnew System::Windows::Forms::Button());
 			this->TBAlmacenarFechaAlmacenaje = (gcnew System::Windows::Forms::TextBox());
 			this->TBRetirar = (gcnew System::Windows::Forms::TabPage());
+			this->TBRetirarID = (gcnew System::Windows::Forms::TextBox());
+			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->BRetirarProducto = (gcnew System::Windows::Forms::Button());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->TBRetirarNombResponsable = (gcnew System::Windows::Forms::TextBox());
@@ -199,7 +209,11 @@ private: System::Windows::Forms::Label^ label21;
 			this->BInventarioOrdenar = (gcnew System::Windows::Forms::Button());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label19 = (gcnew System::Windows::Forms::Label());
-			this->TPBodega = (gcnew System::Windows::Forms::TabPage());
+			this->BIngresarLaBodega = (gcnew System::Windows::Forms::Button());
+			this->BIngresarInventario = (gcnew System::Windows::Forms::Button());
+			this->label23 = (gcnew System::Windows::Forms::Label());
+			this->BSalir = (gcnew System::Windows::Forms::Button());
+			this->label24 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGVBodega))->BeginInit();
 			this->TBCMenuOpciones->SuspendLayout();
 			this->TPCrearBahia->SuspendLayout();
@@ -503,7 +517,6 @@ private: System::Windows::Forms::Label^ label21;
 			this->TBCMenuOpciones->Controls->Add(this->TBRetirar);
 			this->TBCMenuOpciones->Controls->Add(this->TPEliminar);
 			this->TBCMenuOpciones->Controls->Add(this->TPInventario);
-			this->TBCMenuOpciones->Controls->Add(this->TPBodega);
 			this->TBCMenuOpciones->Enabled = false;
 			this->TBCMenuOpciones->Location = System::Drawing::Point(18, 163);
 			this->TBCMenuOpciones->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
@@ -634,6 +647,9 @@ private: System::Windows::Forms::Label^ label21;
 			// 
 			// TBRetirar
 			// 
+			this->TBRetirar->Controls->Add(this->label24);
+			this->TBRetirar->Controls->Add(this->TBRetirarID);
+			this->TBRetirar->Controls->Add(this->label22);
 			this->TBRetirar->Controls->Add(this->BRetirarProducto);
 			this->TBRetirar->Controls->Add(this->label13);
 			this->TBRetirar->Controls->Add(this->TBRetirarNombResponsable);
@@ -653,9 +669,25 @@ private: System::Windows::Forms::Label^ label21;
 			this->TBRetirar->Text = L"Retirar Producto";
 			this->TBRetirar->UseVisualStyleBackColor = true;
 			// 
+			// TBRetirarID
+			// 
+			this->TBRetirarID->Location = System::Drawing::Point(127, 58);
+			this->TBRetirarID->Name = L"TBRetirarID";
+			this->TBRetirarID->Size = System::Drawing::Size(65, 26);
+			this->TBRetirarID->TabIndex = 41;
+			// 
+			// label22
+			// 
+			this->label22->AutoSize = true;
+			this->label22->Location = System::Drawing::Point(8, 58);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(122, 20);
+			this->label22->TabIndex = 40;
+			this->label22->Text = L"ID del producto:";
+			// 
 			// BRetirarProducto
 			// 
-			this->BRetirarProducto->Location = System::Drawing::Point(70, 223);
+			this->BRetirarProducto->Location = System::Drawing::Point(68, 268);
 			this->BRetirarProducto->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->BRetirarProducto->Name = L"BRetirarProducto";
 			this->BRetirarProducto->Size = System::Drawing::Size(156, 35);
@@ -667,7 +699,7 @@ private: System::Windows::Forms::Label^ label21;
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(10, 49);
+			this->label13->Location = System::Drawing::Point(8, 94);
 			this->label13->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(111, 20);
@@ -676,7 +708,7 @@ private: System::Windows::Forms::Label^ label21;
 			// 
 			// TBRetirarNombResponsable
 			// 
-			this->TBRetirarNombResponsable->Location = System::Drawing::Point(200, 183);
+			this->TBRetirarNombResponsable->Location = System::Drawing::Point(198, 228);
 			this->TBRetirarNombResponsable->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->TBRetirarNombResponsable->Name = L"TBRetirarNombResponsable";
 			this->TBRetirarNombResponsable->Size = System::Drawing::Size(115, 26);
@@ -684,7 +716,7 @@ private: System::Windows::Forms::Label^ label21;
 			// 
 			// TBRetirarTipoProduct
 			// 
-			this->TBRetirarTipoProduct->Location = System::Drawing::Point(129, 49);
+			this->TBRetirarTipoProduct->Location = System::Drawing::Point(127, 94);
 			this->TBRetirarTipoProduct->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->TBRetirarTipoProduct->Name = L"TBRetirarTipoProduct";
 			this->TBRetirarTipoProduct->Size = System::Drawing::Size(148, 26);
@@ -693,7 +725,7 @@ private: System::Windows::Forms::Label^ label21;
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(9, 188);
+			this->label14->Location = System::Drawing::Point(7, 233);
 			this->label14->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(185, 20);
@@ -703,7 +735,7 @@ private: System::Windows::Forms::Label^ label21;
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(9, 97);
+			this->label15->Location = System::Drawing::Point(7, 142);
 			this->label15->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(226, 20);
@@ -712,7 +744,7 @@ private: System::Windows::Forms::Label^ label21;
 			// 
 			// TBRetirarFechaRetiro
 			// 
-			this->TBRetirarFechaRetiro->Location = System::Drawing::Point(129, 137);
+			this->TBRetirarFechaRetiro->Location = System::Drawing::Point(127, 182);
 			this->TBRetirarFechaRetiro->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->TBRetirarFechaRetiro->Name = L"TBRetirarFechaRetiro";
 			this->TBRetirarFechaRetiro->Size = System::Drawing::Size(148, 26);
@@ -720,7 +752,7 @@ private: System::Windows::Forms::Label^ label21;
 			// 
 			// TBRetirarCantidades
 			// 
-			this->TBRetirarCantidades->Location = System::Drawing::Point(238, 92);
+			this->TBRetirarCantidades->Location = System::Drawing::Point(236, 137);
 			this->TBRetirarCantidades->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->TBRetirarCantidades->Name = L"TBRetirarCantidades";
 			this->TBRetirarCantidades->Size = System::Drawing::Size(148, 26);
@@ -729,7 +761,7 @@ private: System::Windows::Forms::Label^ label21;
 			// label16
 			// 
 			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(9, 142);
+			this->label16->Location = System::Drawing::Point(7, 187);
 			this->label16->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label16->Name = L"label16";
 			this->label16->Size = System::Drawing::Size(120, 20);
@@ -883,22 +915,60 @@ private: System::Windows::Forms::Label^ label21;
 			this->label19->TabIndex = 0;
 			this->label19->Text = L"Inventario:";
 			// 
-			// TPBodega
+			// BIngresarLaBodega
 			// 
-			this->TPBodega->Location = System::Drawing::Point(4, 29);
-			this->TPBodega->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->TPBodega->Name = L"TPBodega";
-			this->TPBodega->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->TPBodega->Size = System::Drawing::Size(697, 341);
-			this->TPBodega->TabIndex = 5;
-			this->TPBodega->Text = L"Bodegas";
-			this->TPBodega->UseVisualStyleBackColor = true;
+			this->BIngresarLaBodega->Location = System::Drawing::Point(663, 78);
+			this->BIngresarLaBodega->Name = L"BIngresarLaBodega";
+			this->BIngresarLaBodega->Size = System::Drawing::Size(150, 33);
+			this->BIngresarLaBodega->TabIndex = 31;
+			this->BIngresarLaBodega->Text = L"Ingresar Bodega";
+			this->BIngresarLaBodega->UseVisualStyleBackColor = true;
+			// 
+			// BIngresarInventario
+			// 
+			this->BIngresarInventario->Location = System::Drawing::Point(663, 117);
+			this->BIngresarInventario->Name = L"BIngresarInventario";
+			this->BIngresarInventario->Size = System::Drawing::Size(154, 30);
+			this->BIngresarInventario->TabIndex = 32;
+			this->BIngresarInventario->Text = L"Ingresar inventario";
+			this->BIngresarInventario->UseVisualStyleBackColor = true;
+			// 
+			// label23
+			// 
+			this->label23->AutoSize = true;
+			this->label23->Location = System::Drawing::Point(514, 86);
+			this->label23->Name = L"label23";
+			this->label23->Size = System::Drawing::Size(143, 20);
+			this->label23->TabIndex = 33;
+			this->label23->Text = L"Buscar documento";
+			// 
+			// BSalir
+			// 
+			this->BSalir->Location = System::Drawing::Point(746, 978);
+			this->BSalir->Name = L"BSalir";
+			this->BSalir->Size = System::Drawing::Size(102, 34);
+			this->BSalir->TabIndex = 34;
+			this->BSalir->Text = L"Salir";
+			this->BSalir->UseVisualStyleBackColor = true;
+			// 
+			// label24
+			// 
+			this->label24->AutoSize = true;
+			this->label24->Location = System::Drawing::Point(198, 58);
+			this->label24->Name = L"label24";
+			this->label24->Size = System::Drawing::Size(56, 20);
+			this->label24->TabIndex = 42;
+			this->label24->Text = L"Ej. A-3";
 			// 
 			// Bodega
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(741, 1031);
+			this->ClientSize = System::Drawing::Size(872, 1049);
+			this->Controls->Add(this->BSalir);
+			this->Controls->Add(this->label23);
+			this->Controls->Add(this->BIngresarInventario);
+			this->Controls->Add(this->BIngresarLaBodega);
 			this->Controls->Add(this->TBCMenuOpciones);
 			this->Controls->Add(this->BIngresarBodega);
 			this->Controls->Add(this->label4);
@@ -931,10 +1001,11 @@ private: System::Windows::Forms::Label^ label21;
 #pragma endregion
 		array<ListaBahias^>^ MisBahias;
 		array<AlmacenarProducto^>^ MisAlmacenamientos = gcnew array<AlmacenarProducto^>(100);
+		array<ListaRetirarProduct^>^ MisRetirosProducto = gcnew array<ListaRetirarProduct^>(100);
 		int FilaBodega, ColumnaBodega;
-		int ContBahias = 0, CantProductos = 0, ContAlmacenamientos = 0;
+		int ContBahias = 0, CantProductos = 0, ContAlmacenamientos = 0, ContRetirarProducto = 0;
 		String^ TipoProducto = "";
-		
+	//Ingresar filas y columnas de la bodega
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 		
@@ -972,6 +1043,7 @@ private: System::Windows::Forms::Label^ label21;
 			MessageBox::Show("Ingrese las filas o columnas de la bodega", "Error: Bodega no ingresada", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
+	//Crear la bahia
     private: System::Void BCrearBahiaIngresar_Click(System::Object^ sender, System::EventArgs^ e) 
     {
 		array<String^>^ Abecedario = { "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z" };
@@ -1030,6 +1102,7 @@ private: System::Windows::Forms::Label^ label21;
 			MessageBox::Show("Ingrese todos los datos para crear una nueva bahía", "ERROR: Ingrese todos los datos", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
     }
+     //Crar otra bahia
     private: System::Void BCrearBahiaOtroProduct_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 		if (TipoProducto == "")
@@ -1069,11 +1142,12 @@ private: System::Windows::Forms::Label^ label21;
 		BCrearBahiaNoIngresar->Enabled = false;
 		
     }
+     //Almacenar un producto
     private: System::Void BAlmacenarProduct_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 		
 		String^ CodigoAlmacenamiento;
-		String^ TipoProducto;
+		String^ UnTipoProducto;
 		int PesoProducto, CantUnidades, PesoUtilizado, posicion = -1;
 		int UltimoPeso, CantUnidadesSobrantes, CantUnidadesIngresadas, posicion2 = -1;
 		String^ FechaAlmacenaje;
@@ -1087,7 +1161,7 @@ private: System::Windows::Forms::Label^ label21;
 			else
 			{
 				CodigoAlmacenamiento = TBAlmacenarCodigoAlmacen->Text;
-				TipoProducto = TBAlmacenarProductoTipo->Text;
+				UnTipoProducto = TBAlmacenarProductoTipo->Text;
 				array<String^>^ CodigoAlmacen = gcnew array<String^>(2);
 				CodigoAlmacen = CodigoAlmacenamiento->Split('-');
 				for (int i = 0; i < DGVBodega->Rows->Count; i++) //Pasar la letra de la fila a un entero
@@ -1117,9 +1191,9 @@ private: System::Windows::Forms::Label^ label21;
 							PesoUtilizado = PesoProducto * CantUnidades + MisBahias[i]->GetPesoUtilizado();
 							if (PesoUtilizado < MisBahias[i]->GetPesoMax()) //Si el peso es menor al peso máximo
 							{
+								
 								MisBahias[i]->SetPesoUtilizado(PesoUtilizado);
-								MisAlmacenamientos[ContAlmacenamientos] = gcnew AlmacenarProducto(TipoProducto, CantUnidades, PesoProducto, FechaAlmacenaje, NombreResponsable);
-								MisBahias[i]->SetPesoUtilizado(PesoUtilizado);
+								MisAlmacenamientos[ContAlmacenamientos] = gcnew AlmacenarProducto(UnTipoProducto, CantUnidades, PesoProducto, FechaAlmacenaje, NombreResponsable);
 								ContAlmacenamientos++;
 								MisBahias[i]->SetCantUnidades(CantUnidades);
 								DGVBodega->Rows[posicion]->Cells[Convert::ToInt32(CodigoAlmacen[1]) - 1]->Value = MisBahias[i]->GetID()+ " Material: " + MisBahias[i]->GetTipo() + " Unidades:" + MisBahias[i]->GetCantUnidades() + " Peso Max: "+ MisBahias[i]->GetPesoMax() + " Peso Utilizado: " + MisBahias[i]->GetPesoUtilizado();
@@ -1138,6 +1212,8 @@ private: System::Windows::Forms::Label^ label21;
 								}
 								MisBahias[i]->SetPesoUtilizado(UltimoPeso);
 								MisBahias[i]->SetCantUnidades(CantUnidadesIngresadas);
+								MisAlmacenamientos[ContAlmacenamientos] = gcnew AlmacenarProducto(UnTipoProducto,CantUnidadesIngresadas,PesoProducto,FechaAlmacenaje,NombreResponsable);
+								ContAlmacenamientos++;
 								DGVBodega->Rows[posicion]->Cells[Convert::ToInt32(CodigoAlmacen[1]) - 1]->Value = MisBahias[i]->GetID() + " Material: " + MisBahias[i]->GetTipo() + " Unidades:" + MisBahias[i]->GetCantUnidades() + " Peso Max: " + MisBahias[i]->GetPesoMax() + " Peso Utilizado: " + MisBahias[i]->GetPesoUtilizado();
 								for (int j = 0; j < ContBahias; j++)//Ingresar el sobrante a otra bahía con el mismo producto
 								{
@@ -1185,7 +1261,61 @@ private: System::Windows::Forms::Label^ label21;
     //Retirar un producto
     private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e)
 	{
-		
+		String^ CodigoAlmacenamiento;
+		int posicionFila, CantUnidades, FechaRetiro;
+		String^ TipoDelProducto;
+		String^ NombreResponsable;
+		try
+		{
+			if (TBRetirarID->Text == "" || TBRetirarCantidades->Text == "" || TBRetirarFechaRetiro->Text == "" || TBRetirarNombResponsable->Text == "" ||  TBRetirarTipoProduct->Text == "")
+			{
+				MessageBox::Show("Ingresar todos los datos para retirar un producto", "Error: Ingresar todos los datos correspondientes", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+			else
+			{
+				CodigoAlmacenamiento = TBRetirarID->Text;
+				TipoDelProducto = TBRetirarTipoProduct->Text;
+				for (int i = 0; i < MisBahias->Length; i++)
+				{
+					if (CodigoAlmacenamiento == MisBahias[i]->GetID() && TipoDelProducto == MisBahias[i]->GetTipo())
+					{
+						CantUnidades = Convert::ToInt32(TBRetirarCantidades->Text);
+						if (CantUnidades > MisBahias[i]->GetCantUnidades())
+						{
+							MessageBox::Show("La cantidad de retiro es mayor a la que posee la bahia", "Error: Cantidad mayor", MessageBoxButtons::OK, MessageBoxIcon::Error);
+						}
+						else
+						{
+							FechaRetiro = Convert::ToInt32(TBRetirarFechaRetiro->Text);
+							NombreResponsable = TBRetirarNombResponsable->Text;
+							array<String^>^ CodigoAlmacen = gcnew array<String^>(2);
+							CodigoAlmacen = CodigoAlmacenamiento->Split('-');
+							for (int i = 0; i < DGVBodega->Rows->Count; i++) //Pasar la letra de la fila a un entero
+							{
+								String^ Verificar = Convert::ToString(DGVBodega->Rows[i]->HeaderCell->Value);
+								if (Verificar == CodigoAlmacen[0])
+								{
+									posicionFila = i;
+									break;
+								}
+							}
+							MisRetirosProducto[ContRetirarProducto] = gcnew ListaRetirarProduct(TipoDelProducto, NombreResponsable, CodigoAlmacenamiento, CantUnidades, FechaRetiro);
+							ContRetirarProducto++;
+							MisBahias[i]->SetCantUnidades(MisBahias[i]->GetCantUnidades() - CantUnidades);
+							DGVBodega->Rows[posicionFila]->Cells[Convert::ToInt32(CodigoAlmacen[1]) - 1]->Value = MisBahias[i]->GetID() + " Material: " + MisBahias[i]->GetTipo() + " Unidades:" + MisBahias[i]->GetCantUnidades() + " Peso Max: " + MisBahias[i]->GetPesoMax() + " Peso Utilizado: " + MisBahias[i]->GetPesoUtilizado(); ;
+						}
+						
+					}
+				}
+				
+				
+
+			}
+		}
+		catch (...)
+		{
+				
+		}
     }
 };
 }
