@@ -10,6 +10,7 @@ namespace BodegaGrid {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Resumen de Bodega
@@ -128,6 +129,8 @@ private: System::Windows::Forms::Button^ BIngresarInventario;
 private: System::Windows::Forms::Label^ label23;
 private: System::Windows::Forms::Button^ BSalir;
 private: System::Windows::Forms::Label^ label24;
+private: System::Windows::Forms::OpenFileDialog^ OFDAbrirArchivo;
+
 
 
 	protected:
@@ -214,6 +217,7 @@ private: System::Windows::Forms::Label^ label24;
 			this->BIngresarInventario = (gcnew System::Windows::Forms::Button());
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->BSalir = (gcnew System::Windows::Forms::Button());
+			this->OFDAbrirArchivo = (gcnew System::Windows::Forms::OpenFileDialog());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGVBodega))->BeginInit();
 			this->TBCMenuOpciones->SuspendLayout();
 			this->TPCrearBahia->SuspendLayout();
@@ -938,6 +942,7 @@ private: System::Windows::Forms::Label^ label24;
 			this->BIngresarLaBodega->TabIndex = 31;
 			this->BIngresarLaBodega->Text = L"Ingresar Bodega";
 			this->BIngresarLaBodega->UseVisualStyleBackColor = true;
+			this->BIngresarLaBodega->Click += gcnew System::EventHandler(this, &Bodega::BIngresarLaBodega_Click);
 			// 
 			// BIngresarInventario
 			// 
@@ -948,6 +953,7 @@ private: System::Windows::Forms::Label^ label24;
 			this->BIngresarInventario->TabIndex = 32;
 			this->BIngresarInventario->Text = L"Ingresar inventario";
 			this->BIngresarInventario->UseVisualStyleBackColor = true;
+			this->BIngresarInventario->Click += gcnew System::EventHandler(this, &Bodega::BIngresarInventario_Click);
 			// 
 			// label23
 			// 
@@ -968,6 +974,10 @@ private: System::Windows::Forms::Label^ label24;
 			this->BSalir->Text = L"Salir";
 			this->BSalir->UseVisualStyleBackColor = true;
 			this->BSalir->Click += gcnew System::EventHandler(this, &Bodega::BSalir_Click);
+			// 
+			// OFDAbrirArchivo
+			// 
+			this->OFDAbrirArchivo->FileName = L"openFileDialog1";
 			// 
 			// Bodega
 			// 
@@ -1375,6 +1385,41 @@ private: System::Windows::Forms::Label^ label24;
     private: System::Void BSalir_Click(System::Object^ sender, System::EventArgs^ e)  
     {
 		Application::Exit();
+    }
+
+    private: System::Void BIngresarLaBodega_Click(System::Object^ sender, System::EventArgs^ e) 
+    {
+		array<String^>^ DatosTemporales;
+		if (System::Windows::Forms::DialogResult::OK == OFDAbrirArchivo->ShowDialog())
+		{
+			StreamReader^ inputStream = gcnew StreamReader(OFDAbrirArchivo->FileName);
+			if (inputStream != nullptr)
+			{
+				String^ LeerLinea = inputStream->ReadLine();
+				DatosTemporales = LeerLinea->Split(',');
+			}
+			else
+			{
+				MessageBox::Show("Ingrese el archivo de texto con datos", "Error archivo vacio", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+    }
+    private: System::Void BIngresarInventario_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		array<String^>^ DatosTemporales;
+		if (System::Windows::Forms::DialogResult::OK == OFDAbrirArchivo->ShowDialog())
+		{
+			StreamReader^ inputStream = gcnew StreamReader(OFDAbrirArchivo->FileName);
+			if (inputStream != nullptr)
+			{
+				String^ LeerLinea = inputStream->ReadLine();
+				DatosTemporales = LeerLinea->Split(',');
+			}
+			else
+			{
+				MessageBox::Show("Ingrese el archivo de texto con datos", "Error archivo vacio", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
     }
 };
 }
