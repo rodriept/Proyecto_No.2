@@ -297,6 +297,7 @@ private: System::Windows::Forms::Label^ label24;
 			// 
 			// BIngresarBodega
 			// 
+			this->BIngresarBodega->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->BIngresarBodega->Location = System::Drawing::Point(430, 111);
 			this->BIngresarBodega->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->BIngresarBodega->Name = L"BIngresarBodega";
@@ -544,7 +545,7 @@ private: System::Windows::Forms::Label^ label24;
 			this->TPCrearBahia->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->TPCrearBahia->Name = L"TPCrearBahia";
 			this->TPCrearBahia->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->TPCrearBahia->Size = System::Drawing::Size(697, 341);
+			this->TPCrearBahia->Size = System::Drawing::Size(683, 341);
 			this->TPCrearBahia->TabIndex = 0;
 			this->TPCrearBahia->Text = L"Crear Bahía";
 			this->TPCrearBahia->UseVisualStyleBackColor = true;
@@ -628,6 +629,7 @@ private: System::Windows::Forms::Label^ label24;
 			// 
 			// BAlmacenarProduct
 			// 
+			this->BAlmacenarProduct->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->BAlmacenarProduct->Location = System::Drawing::Point(98, 269);
 			this->BAlmacenarProduct->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->BAlmacenarProduct->Name = L"BAlmacenarProduct";
@@ -696,6 +698,7 @@ private: System::Windows::Forms::Label^ label24;
 			// 
 			// BRetirarProducto
 			// 
+			this->BRetirarProducto->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->BRetirarProducto->Location = System::Drawing::Point(68, 268);
 			this->BRetirarProducto->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->BRetirarProducto->Name = L"BRetirarProducto";
@@ -809,6 +812,7 @@ private: System::Windows::Forms::Label^ label24;
 			// 
 			// BEliminarBahia
 			// 
+			this->BEliminarBahia->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->BEliminarBahia->Location = System::Drawing::Point(75, 125);
 			this->BEliminarBahia->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->BEliminarBahia->Name = L"BEliminarBahia";
@@ -816,6 +820,7 @@ private: System::Windows::Forms::Label^ label24;
 			this->BEliminarBahia->TabIndex = 9;
 			this->BEliminarBahia->Text = L"Ingresar";
 			this->BEliminarBahia->UseVisualStyleBackColor = true;
+			this->BEliminarBahia->Click += gcnew System::EventHandler(this, &Bodega::BEliminarBahia_Click);
 			// 
 			// TBEliminarFila
 			// 
@@ -876,7 +881,7 @@ private: System::Windows::Forms::Label^ label24;
 			this->TPInventario->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->TPInventario->Name = L"TPInventario";
 			this->TPInventario->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->TPInventario->Size = System::Drawing::Size(697, 341);
+			this->TPInventario->Size = System::Drawing::Size(683, 341);
 			this->TPInventario->TabIndex = 4;
 			this->TPInventario->Text = L"Inventario";
 			this->TPInventario->UseVisualStyleBackColor = true;
@@ -926,6 +931,7 @@ private: System::Windows::Forms::Label^ label24;
 			// 
 			// BIngresarLaBodega
 			// 
+			this->BIngresarLaBodega->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->BIngresarLaBodega->Location = System::Drawing::Point(663, 78);
 			this->BIngresarLaBodega->Name = L"BIngresarLaBodega";
 			this->BIngresarLaBodega->Size = System::Drawing::Size(150, 33);
@@ -935,6 +941,7 @@ private: System::Windows::Forms::Label^ label24;
 			// 
 			// BIngresarInventario
 			// 
+			this->BIngresarInventario->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->BIngresarInventario->Location = System::Drawing::Point(663, 117);
 			this->BIngresarInventario->Name = L"BIngresarInventario";
 			this->BIngresarInventario->Size = System::Drawing::Size(154, 30);
@@ -953,12 +960,14 @@ private: System::Windows::Forms::Label^ label24;
 			// 
 			// BSalir
 			// 
+			this->BSalir->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->BSalir->Location = System::Drawing::Point(605, 571);
 			this->BSalir->Name = L"BSalir";
 			this->BSalir->Size = System::Drawing::Size(118, 34);
 			this->BSalir->TabIndex = 34;
 			this->BSalir->Text = L"Salir";
 			this->BSalir->UseVisualStyleBackColor = true;
+			this->BSalir->Click += gcnew System::EventHandler(this, &Bodega::BSalir_Click);
 			// 
 			// Bodega
 			// 
@@ -999,6 +1008,7 @@ private: System::Windows::Forms::Label^ label24;
 
 		}
 #pragma endregion
+		//Variables globales
 		array<ListaBahias^>^ MisBahias;
 		array<AlmacenarProducto^>^ MisAlmacenamientos = gcnew array<AlmacenarProducto^>(100);
 		array<ListaRetirarProduct^>^ MisRetirosProducto = gcnew array<ListaRetirarProduct^>(100);
@@ -1312,7 +1322,7 @@ private: System::Windows::Forms::Label^ label24;
 							}
 							DGVBodega->Rows[posicionFila]->Cells[Convert::ToInt32(CodigoAlmacen[1]) - 1]->Value = MisBahias[i]->GetID() + " Material: " + MisBahias[i]->GetTipo() + " Unidades:" + MisBahias[i]->GetCantUnidades() + " Peso Max: " + MisBahias[i]->GetPesoMax() + " Peso Utilizado: " + MisBahias[i]->GetPesoUtilizado(); ;
 						}
-						
+						break;
 					}
 				}
 				
@@ -1324,6 +1334,47 @@ private: System::Windows::Forms::Label^ label24;
 		{
 				
 		}
+    }
+    //Elimnar una bahia
+    private: System::Void BEliminarBahia_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		array<String^>^ Abecedario = { "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z" };
+		String^ Fila;
+		int Columna, FilaEntero;
+		String^ ID;
+		if (TBEliminarFila->Text == "" || TBEliminarColumn->Text == "")
+		{ 
+			MessageBox::Show("Ingrese los datos necesarios para la eliminacion de la bahia", "Error: Datos no ingresados", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		else
+		{
+			Fila = TBEliminarFila->Text;
+			Fila = Fila->ToUpper();
+			Columna = Convert::ToInt32(TBEliminarColumn->Text);
+			ID = Fila + "-" + Columna;
+			for (int i = 0; i < Abecedario->Length; i++)
+			{
+				if (Fila == Abecedario[i])
+				{
+					FilaEntero = i;
+				}
+			}
+			for (int i = 0; i < MisBahias->Length; i++)
+			{
+				if (ID == MisBahias[i]->GetID())
+				{
+					if (MisBahias[i]->GetCantUnidades() == 0)
+					{
+						DGVBodega->Rows[FilaEntero]->Cells[Columna]->Value = nullptr;
+						MessageBox::Show("Bahia eliminada exitosamente", "Bahia elimnada", MessageBoxButtons::OK);
+					}
+				}
+			}
+		}
+    }
+    private: System::Void BSalir_Click(System::Object^ sender, System::EventArgs^ e)  
+    {
+		Application::Exit();
     }
 };
 }
