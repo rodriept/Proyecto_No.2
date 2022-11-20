@@ -19,3 +19,7 @@ int AlmacenarProducto::GetPesoProducto()
 {
 	return PesoProducto;
 }
+System::String^ AlmacenarProducto::GetID()
+{
+	return ID;
+}
